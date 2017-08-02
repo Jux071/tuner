@@ -3,6 +3,8 @@ class User < ApplicationRecord
 	before_save { self.email = email.downcase }
 	has_secure_password
 
+	has_many :playlists, dependent: :destroy
+
 	ROLE_USER = 0
 	ROLE_ADMIN = 1
 	ROLE_SUPERADMIN = 2

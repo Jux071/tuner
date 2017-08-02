@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801115540) do
+ActiveRecord::Schema.define(version: 20170802135428) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title", null: false
@@ -18,12 +18,18 @@ ActiveRecord::Schema.define(version: 20170801115540) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "artists_id"
+    t.integer "tracks_id"
+    t.index ["artists_id"], name: "index_albums_on_artists_id"
+    t.index ["tracks_id"], name: "index_albums_on_tracks_id"
   end
 
   create_table "artists", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "tracks_id"
+    t.index ["tracks_id"], name: "index_artists_on_tracks_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -31,6 +37,8 @@ ActiveRecord::Schema.define(version: 20170801115540) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "tracks_id"
+    t.index ["tracks_id"], name: "index_genres_on_tracks_id"
   end
 
   create_table "playlists", force: :cascade do |t|
