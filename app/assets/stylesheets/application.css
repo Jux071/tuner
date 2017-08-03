@@ -41,3 +41,10 @@ footer ul li {
   float: left;
   margin-left: 15px;
 }
+
+.splash {
+  background-image: url("tuner.jpeg");
+  background-size: contain; 
+  background-position: left;
+  background-repeat: no-repeat;
+}
