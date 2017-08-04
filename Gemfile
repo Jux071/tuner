@@ -32,6 +32,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'awesome_print', require: 'ap'
 
+gem 'jquery-rails'
+
+gem 'bootstrap-sass'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
