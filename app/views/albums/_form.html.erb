@@ -1,0 +1,12 @@
+<%= form_for @album do |form| %>
+	<%= form.label :title %>
+	<%= form.text_field :title, class: 'form-control' %>
+	<br>
+	<%= form.label :released %>
+	<%= form.text_field :released, class: 'form-control' %>
+	<br>
+	<%= form.label :description, 'Description (optional)' %>
+  <%= form.text_area :description, class: 'form-control' %>
+  <br>
+  <%= form.submit params[:action] == 'new' ? 'Save' : 'Update', class: 'btn btn-block btn-default' %>
+<% end %>

@@ -9,6 +9,12 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
 
 	has_many :playlists, dependent: :destroy
+	has_many :favorites
+	has_many :favorite_songs, through: :favorites, source: :track
+	has_many :albums
+	has_many :artists
+	has_many :genres
+	has_many :tracks
 
 	validates_uniqueness_of :username, :email
 

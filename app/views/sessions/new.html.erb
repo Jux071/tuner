@@ -5,33 +5,22 @@
 		<div class="well">
 			<h1 style="text-align: center";>Login</h1>
 
+			<%= display_flash :error %>
 
-   	<%= form_tag session_path, method: :post do %>	
-    <%= label_tag :username %>
-    <%= text_field_tag :username, nil, class: 'form-control' %>
-    <br>
-   
+	   	<%= form_tag session_path, method: :post do %>	
+		    <%= label_tag :username %>
+		    <%= text_field_tag :username, nil, class: 'form-control' %>
+		    <br>   
 
-    <%= label_tag :password %>
-    <%= password_field_tag :password, nil, class: 'form-control' %>
-    
-    <br>  
-       
-	      	<%= check_box_tag :remember_me %>
+		    <%= label_tag :password %>
+		    <%= password_field_tag :password, nil, class: 'form-control' %>  
+		    <br>  
 
-	      	<strong>Remember me on this computer</strong>
-	      	
-     
-    <%= submit_tag 'Login', class: 'btn btn-block btn-success' %>
-<% end %>
-
-
-
-     
-
-	    
-	      
-	   
+			  <%= check_box_tag :remember_me %>
+				<strong>Remember me on this computer</strong>	      	
+		     
+		    <%= submit_tag 'Login', class: 'btn btn-block btn-success' %>
+			<% end %>   
 	     
 			<br>
 			<center p>New user? <%= link_to "Join us now!", new_user_path %></center p>

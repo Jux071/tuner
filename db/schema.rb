@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170802135719) do
+ActiveRecord::Schema.define(version: 20170804122146) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title", null: false
@@ -18,18 +18,27 @@ ActiveRecord::Schema.define(version: 20170802135719) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "artists_id"
-    t.integer "tracks_id"
-    t.index ["artists_id"], name: "index_albums_on_artists_id"
-    t.index ["tracks_id"], name: "index_albums_on_tracks_id"
+    t.integer "artist_id"
+    t.integer "user_id"
+    t.index ["artist_id"], name: "index_albums_on_artist_id"
+    t.index ["user_id"], name: "index_albums_on_user_id"
   end
 
   create_table "artists", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_artists_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "tracks_id"
-    t.index ["tracks_id"], name: "index_artists_on_tracks_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tracks_id"], name: "index_favorites_on_tracks_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -37,14 +46,25 @@ ActiveRecord::Schema.define(version: 20170802135719) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_genres_on_user_id"
+  end
+
+  create_table "playlist_songs", force: :cascade do |t|
+    t.integer "playlist_id"
     t.integer "tracks_id"
-    t.index ["tracks_id"], name: "index_genres_on_tracks_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["playlist_id"], name: "index_playlist_songs_on_playlist_id"
+    t.index ["tracks_id"], name: "index_playlist_songs_on_tracks_id"
   end
 
   create_table "playlists", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_playlists_on_user_id"
   end
 
   create_table "tracks", force: :cascade do |t|
@@ -52,6 +72,14 @@ ActiveRecord::Schema.define(version: 20170802135719) do
     t.string "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "artist_id"
+    t.integer "genre_id"
+    t.integer "album_id"
+    t.integer "user_id"
+    t.index ["album_id"], name: "index_tracks_on_album_id"
+    t.index ["artist_id"], name: "index_tracks_on_artist_id"
+    t.index ["genre_id"], name: "index_tracks_on_genre_id"
+    t.index ["user_id"], name: "index_tracks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -62,8 +90,6 @@ ActiveRecord::Schema.define(version: 20170802135719) do
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "playlists_id"
-    t.index ["playlists_id"], name: "index_users_on_playlists_id"
   end
 
 end

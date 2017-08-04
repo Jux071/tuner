@@ -7,16 +7,22 @@
 				<%= form_for @user do |form| %>
 				<%= form.label :username %>
 				<%= form.text_field :username, class: 'form-control' %>
+				<%= error_for :username, @user.errors do |message| %>
+  				<strong><%= message %></strong>
+  			<% end %>
 				<br>
 				<%= form.label :email %>
 				<%= form.email_field :email, class: 'form-control' %>
+				<%= error_for :email, @user.errors %>
 				<br>
 				<%= form.label :password, 'Password' %>
 				<%= form.password_field :password, class: 'form-control' %>
+				<%= error_for :password, @user.errors %>
 				<br>
 				<%= form.label :password_confirmation, 'Password confirmation' %>
 				<%= form.password_field :password_confirmation, class: 'form-control' %>
-				<br>
+				<%= error_for :password_confirmation, @user.errors %>
+  			<br> 
 				<%= form.submit 'Join us', class: 'btn btn-block btn-success' %>
 				<% end %>
 		</div>
