@@ -1,0 +1,16 @@
+<tr>
+	<td><%= link_to track.name, track_path(track) %></td>	
+	<td><%= track.duration %></td>	
+	<td><%= link_to track.artist.name, artist_path(track.artist_id) %></td>
+	<td><%= link_to track.genre.name, genre_path(track.genre_id) %></td>
+		<td><%= link_to track.album.title, album_path(track.album_id) %></td>
+	<td><%= link_to 'Add to Playlist', edit_track_path(track), class: 'btn btn-sm btn-success' %>
+	<button type="button" class="btn btn-default btn-sm">
+  <span class="glyphicon glyphicon-heart-empty"></span> Add to Favorites
+</button>
+	<%= button_tag "", type: 'submit', class: "btn btn-default glyphicon glyphicon-heart-empty" %>
+	<% if logged_in? %>
+	<%= link_to ' Edit', edit_track_path(track), class: ' btn btn-sm btn-primary' %>
+			<%= link_to ' Delete', track_path(track), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' %></td>
+			<% end %>
+</tr>

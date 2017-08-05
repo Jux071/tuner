@@ -1,35 +1,44 @@
 <% if logged_in? %>
 <nav class="navbar navbar-default">
-	<ul class="nav navbar-nav">  
-	<a class="navbar-brand">TUNER</a>    
-    <li><%= link_to "Profile", current_user %></li>
-          <li><%= link_to "Settings", '#' %></li>
-          <% if current_user.admin? %>
-            <li><%= link_to "Dashboard", admin_dashboard_path %> </li>
-          <% end %>
-<form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-       <li><%= link_to session_path, method: :delete do %>
-            <i span class="glyphicon glyphicon-log-out"></i> Logout
-          <% end %>
+	<ul class="nav navbar-nav">
+  <a class="navbar-brand">TUNER</a>
+    <li><%= link_to "Tracks", tracks_path %></li>
+    <li><%= link_to "Albums", albums_path %></li>
+    <li><%= link_to "Genres", genres_path %></li>
+    <li><%= link_to "Playlists", tracks_path %></li>
+    <li><%= link_to "Favorites", tracks_path %></li>
+
+  <form class="navbar-form navbar-left">
+    <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+  </ul>
+
+  <ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i span class="glyphicon glyphicon-user"></i> Signed in as: <%= current_user.username %><b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li><%= link_to "View Profile", current_user %></li>
+        <li><%= link_to "Settings", '#' %></li>
+        <% if current_user.admin? %>
+          <li><%= link_to "Dashboard", admin_dashboard_path %> </li>
+        <% end %>
+        <li class="divider"></li>
+          <li>
+            <%= link_to "Log out", logout_path, method: :delete %>
           </li>
-
-          
-          <p class="navbar-text">Signed in as: <a><i span class="glyphicon glyphicon-user"></i> <%= current_user.username %></a></p> 
-    
-
-
-
-
-
-          
-
-        </ul>
-      </li>
+      </ul>
+    </li>
+  </ul>
+   
 <% end %>
- </ul>
+
  </nav>
+
+
+        
+          
+

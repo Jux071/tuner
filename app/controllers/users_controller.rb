@@ -8,15 +8,15 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		if @user.save
 			log_in @user
-			flash[:notice] = 'Registered successfully!'
-		  redirect_to root_path
+			flash[:success] = 'Registered successfully!'
+		  redirect_to @user
 	else
 		render :new
 	end
 end
 
 	def show
-		@user = current_user
+		@user = User.find(params[:id])
 	end
 
 	private

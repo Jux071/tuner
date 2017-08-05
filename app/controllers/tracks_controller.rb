@@ -12,9 +12,10 @@ class TracksController < ApplicationController
 	def create
 		@track = Track.new(track_params)
 		if @track.save
-			flash[:notice] = 'Album created successfully'
+			flash[:notice] = 'Track created successfully'
 			redirect_to tracks_path
 		else
+			flash[:notice] = 'Error'
 			render :new
 		end
 	end
@@ -44,7 +45,7 @@ class TracksController < ApplicationController
 	private
 
 	def track_params
-		params.require(:track).permit(:name, :duration)		
+		params.require(:track).permit(:name, :duration, :artist_id, :genre_id, :album_id, :user_id)		
 	end
 
 	def find_track

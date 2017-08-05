@@ -33,7 +33,7 @@ class AlbumsController < ApplicationController
 	end
 
 	def show
-		
+		@tracks = @album.tracks
 	end
 
 	def destroy
@@ -45,7 +45,7 @@ class AlbumsController < ApplicationController
 	private
 
 	def album_params
-		params.require(:album).permit(:title, :released, :description, :artists_id, :tracks_id)		
+		params.require(:album).permit(:title, :released, :description, :artist_id, :user_id, :genre_id)		
 	end
 
 	def find_album

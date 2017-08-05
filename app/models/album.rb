@@ -1,6 +1,7 @@
 class Album < ApplicationRecord
 	belongs_to :artist
 	belongs_to :user
+	belongs_to :genre
 
 	has_many :tracks, dependent: :destroy
 
