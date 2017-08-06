@@ -2,6 +2,56 @@
 <h1>welcome to tuner</h1>
 </div>
 
+
+<div class="row">
+  <div class="column">
+    <div class="card card-inverse card-success mb-3 text-center">
+      <div class="card-block">
+        <h3 class="card-title">Total Tracks</h3>
+        <p class="card-text" style="background-color:powderblue;"><%= @tracks %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card card-inverse card-info mb-3 text-center">
+      <div class="card-block">
+        <h3 class="card-title">Total Albums</h3>
+        <p class="card-text" style="background-color:lightgreen;"><%= @albums %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card card-inverse card-warning mb-3 text-center">
+      <div class="card-block">
+        <h3 class="card-title">Total Genres</h3>
+        <p class="card-text" style="background-color:lightpink;"><%= @genres %></p>        
+      </div>
+    </div>
+  </div>
+
+ <div class="column">
+    <div class="card card-inverse card-warning mb-3 text-center">
+      <div class="card-block">
+        <h3 class="card-title">Registered Users</h3>
+        <p class="card-text" style="background-color:orange;"><%= @users %></p> 
+          
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card card-inverse card-warning mb-3 text-center">
+      <div class="card-block">
+        <h3 class="card-title">Total Artists</h3>
+        <p class="card-text" style="background-color:lightgrey;"><%= @artists %></p>        
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!-- Button trigger modal -->
 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   Launch demo modal
@@ -29,3 +79,4 @@
 
 
 <%= link_to 'New album', new_album_path, class: "btn btn-default" %>
+

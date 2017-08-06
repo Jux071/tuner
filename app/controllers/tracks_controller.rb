@@ -3,6 +3,11 @@ class TracksController < ApplicationController
 	before_action :find_track, { only: [:edit, :update, :show, :destroy] }
 	def index
 		@tracks = Track.all
+		if params[:search]
+			@tracks = Track.search(params[:search]).order("created_at DESC")
+		else
+			@tracks = Track.all.order('created_at DESC')
+		end
 	end
 
 	def new
