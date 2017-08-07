@@ -1,14 +1,20 @@
 class TracksController < ApplicationController
 
 	before_action :find_track, { only: [:edit, :update, :show, :destroy] }
-	def index
-		@tracks = Track.all
-		if params[:search]
-			@tracks = Track.search(params[:search]).order("created_at DESC")
-		else
-			@tracks = Track.all.order('created_at DESC')
-		end
-	end
+	
+	#def index
+#if params[:search]
+#@tracks = Track.search(params[:search])
+#else
+#@tracks = Track.all
+#end
+#end
+
+def index
+	@tracks = Track.search(params[:search])
+	
+end
+
 
 	def new
 		@track = Track.new
@@ -47,6 +53,8 @@ class TracksController < ApplicationController
 		redirect_to tracks_path
 	end
 
+
+
 	private
 
 	def track_params
@@ -57,4 +65,18 @@ class TracksController < ApplicationController
 		@track = Track.find(params[:id])
 	end
 
+def favorite
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorites << @track
+      redirect_to :back, notice: 'You favorited #{@track.name}'
+
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@track)
+      redirect_to :back, notice: '#{@track.name} removed from favorites'
+
+    else
+      redirect_to :back, notice: 'Nothing happened.'
+    end
+end
 end

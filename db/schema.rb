@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170805155334) do
+ActiveRecord::Schema.define(version: 20170807113300) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title", null: false
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170805155334) do
     t.integer "artist_id"
     t.integer "user_id"
     t.integer "genre_id"
+    t.string "cover"
     t.index ["artist_id"], name: "index_albums_on_artist_id"
     t.index ["genre_id"], name: "index_albums_on_genre_id"
     t.index ["user_id"], name: "index_albums_on_user_id"
@@ -36,10 +37,10 @@ ActiveRecord::Schema.define(version: 20170805155334) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "tracks_id"
+    t.integer "track_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tracks_id"], name: "index_favorites_on_tracks_id"
+    t.index ["track_id"], name: "index_favorites_on_track_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
@@ -54,11 +55,11 @@ ActiveRecord::Schema.define(version: 20170805155334) do
 
   create_table "playlist_songs", force: :cascade do |t|
     t.integer "playlist_id"
-    t.integer "tracks_id"
+    t.integer "track_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["playlist_id"], name: "index_playlist_songs_on_playlist_id"
-    t.index ["tracks_id"], name: "index_playlist_songs_on_tracks_id"
+    t.index ["track_id"], name: "index_playlist_songs_on_track_id"
   end
 
   create_table "playlists", force: :cascade do |t|

@@ -1,12 +1,24 @@
 <%= form_for @album do |form| %>
-	<%= form.label :title %>
+	<%= form.label :artist_id %>
+  <%= form.collection_select :artist_id, Artist.all, :id, :name, { prompt: 'Choose artist'}, class: 'form-control' %>
+  <%= error_for :artist, @album.errors %>
+  <br>
+  <%= form.label :title %>
 	<%= form.text_field :title, class: 'form-control' %>
 	<br>
+	<%= form.label :genre_id %>
+  <%= form.collection_select :genre_id, Genre.all, :id, :name, { prompt: 'Choose genre'}, class: 'form-control' %>
+  <%= error_for :genre, @album.errors %>
+  <br>
 	<%= form.label :released %>
 	<%= form.text_field :released, class: 'form-control' %>
 	<br>
 	<%= form.label :description, 'Description (optional)' %>
   <%= form.text_area :description, class: 'form-control' %>
   <br>
+  <%= form.label :cover %>
+	<%= form.text_field :cover, class: 'form-control' %>
+	<br>
+	<%= form.hidden_field :user_id, :value => current_user.id %>
   <%= form.submit params[:action] == 'new' ? 'Save' : 'Update', class: 'btn btn-block btn-default' %>
 <% end %>

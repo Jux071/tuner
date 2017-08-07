@@ -9,6 +9,11 @@ Rails.application.routes.draw do
 	resources :users, only: [:new, :create, :show]
 	resource :session, only: [:new, :create, :destroy]
 	resources :albums
+	resources :favorite_tracks, only: [:create, :destroy]
+
+	#resources :tracks do
+  #put :favorite, on: :member
+#end
 
 	get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
