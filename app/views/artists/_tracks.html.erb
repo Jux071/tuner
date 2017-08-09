@@ -1,0 +1,45 @@
+<div class="panel-heading">Tracks <span class="badge"><%= @artist.tracks.count %></span>
+</div>      
+  <table class = 'table table-striped table-hover'>
+    <thead>
+			<tr>
+    		<th>Name</th>
+    		<th>Duration</th>
+    		<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+      <% @tracks.each do |track| %>
+				<tr>
+					<td><%= link_to track.name, track_path(track) %></td>	
+					<td><%= track.duration %></td>		
+					<td>
+
+	<% if logged_in? %>
+	<% unless current_user.favorite_tracks.exists?(id: track.id) %>
+<%= link_to favorite_tracks_path(track_id: track), method: :post do %>
+<span class="glyphicon glyphicon-heart-empty gi-2x" role="button" aria-hidden="true"></span>
+<% end %>
+<% else %>
+<%= link_to favorite_track_path(track), method: :delete do %>
+<span class="glyphicon glyphicon-heart gi-2x" role="button" aria-hidden="true"></span>
+<% end %>
+<% end %>
+<%= link_to 'Add to Playlist', edit_track_path(track), class: 'btn btn-sm btn-success' %>
+  <%= link_to edit_track_path(track), class: 'btn btn-sm btn-primary', target: :_blank do %>
+<i class="glyphicon glyphicon-edit"></i> Edit
+<% end %>
+
+
+
+	
+			<%= link_to ' Delete', track_path(track), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' %>
+				
+			<% end %>
+
+			<%= link_to track.link, target: :_blank do %>
+<span class="glyphicon glyphicon-play gi-2x" role="button" aria-hidden="true"></span>
+<% end %></td>
+			<% end %>
+		</tbody>
+  </table>

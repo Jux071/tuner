@@ -34,19 +34,25 @@ class AlbumsController < ApplicationController
 
 	def show
 		@tracks = @album.tracks
+		@albums = Album.top_5
 	end
 
 	def destroy
 		@album.destroy
-		flash[:notice] = 'Album deleted'
+		flash[:success] = 'Album deleted'
 		redirect_to albums_path
 	end
 
+
 	private
 
+	#def album_params
+	#	params.require(:album).permit(:title, :released, :description, :artist_id, :genre_id, :cover, :user_id)		
+	#end
+
 	def album_params
-		params.require(:album).permit(:title, :released, :description, :artist_id, :user_id, :genre_id, :cover)		
-	end
+     params.require(:album).permit(:title, :released, :description, :artist_id, :genre_id, :cover, :user_id)
+   end
 
 	def find_album
 		@album = Album.find(params[:id])

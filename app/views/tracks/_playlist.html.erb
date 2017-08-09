@@ -1,0 +1,13 @@
+<%= form_for PlaylistTrack.new do |form| %>
+<div class="modal-body">
+  <%= form.label :playlist_id %>
+  <%= form.collection_select :playlist_id, Playlist.all, :id, :name, { prompt: 'Choose Playlist' }, class: 'form-control' %>
+  <%= error_for :playlist, @playlist.errors %>
+  <br>
+  <%= form.submit params[:action] == 'new' ? 'Save' : 'Update', class: 'btn btn-block btn-primary' %>
+  </div>
+    <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <%= f.button :submit, :class => 'btn btn-primary' %>
+  </div>
+<% end %>

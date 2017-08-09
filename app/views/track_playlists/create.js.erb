@@ -1,0 +1,5 @@
+<% if @playlist_song.persisted? %>
+	$('#products-alerts').html("<%= escape_javascript render @playlist_song %>");
+<% else %>
+	$('#products-alerts').html("<%= escape_javascript render @playlist_song %>");
+<% end %>

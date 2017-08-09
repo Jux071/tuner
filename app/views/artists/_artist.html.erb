@@ -1,0 +1,8 @@
+<tr>
+  <td><%= link_to artist.name, artist_path(artist) %></td>
+	
+	<% if logged_in? %>
+	<td><%= link_to ' Edit', edit_artist_path(artist), class: ' btn btn-sm btn-primary' %>
+			<%= link_to ' Delete', artist_path(artist), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' %></td>
+			<% end %>
+</tr>

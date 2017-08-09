@@ -12,7 +12,7 @@ class TracksController < ApplicationController
 
 def index
 	@tracks = Track.search(params[:search])
-	
+	@albums = Album.all
 end
 
 
@@ -23,7 +23,7 @@ end
 	def create
 		@track = Track.new(track_params)
 		if @track.save
-			flash[:notice] = 'Track created successfully'
+			flash[:success] = 'Track created successfully'
 			redirect_to tracks_path
 		else
 			flash[:notice] = 'Error'
@@ -58,25 +58,25 @@ end
 	private
 
 	def track_params
-		params.require(:track).permit(:name, :duration, :artist_id, :genre_id, :album_id, :user_id)		
+		params.require(:track).permit(:name, :duration, :artist_id, :genre_id, :album_id, :user_id, :link)		
 	end
 
 	def find_track
 		@track = Track.find(params[:id])
 	end
 
-def favorite
-    type = params[:type]
-    if type == "favorite"
-      current_user.favorites << @track
-      redirect_to :back, notice: 'You favorited #{@track.name}'
+#def favorite
+#    type = params[:type]
+#    if type == "favorite"
+#      current_user.favorites << @track
+#      redirect_to :back, notice: '#{@track.name} added to favorites'
 
-    elsif type == "unfavorite"
-      current_user.favorites.delete(@track)
-      redirect_to :back, notice: '#{@track.name} removed from favorites'
+ #   elsif type == "unfavorite"
+#      current_user.favorites.delete(@track)
+ #     redirect_to :back, notice: '#{@track.name} removed from favorites'
 
-    else
-      redirect_to :back, notice: 'Nothing happened.'
-    end
-end
+#    else
+#      redirect_to :back, notice: 'Nothing happened.'
+ #   end
+#end
 end

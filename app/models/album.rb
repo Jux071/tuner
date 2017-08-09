@@ -7,4 +7,7 @@ class Album < ApplicationRecord
 
 	validates :title, presence: true, length: { maximum: 30 }
 	validates_length_of :released, maximum: 4, numericality: true
+
+	scope :top_5, -> { order(created_at: :desc) }
+
 end

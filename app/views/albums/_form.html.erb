@@ -9,6 +9,7 @@
 	<%= form.label :genre_id %>
   <%= form.collection_select :genre_id, Genre.all, :id, :name, { prompt: 'Choose genre'}, class: 'form-control' %>
   <%= error_for :genre, @album.errors %>
+
   <br>
 	<%= form.label :released %>
 	<%= form.text_field :released, class: 'form-control' %>
@@ -22,3 +23,4 @@
 	<%= form.hidden_field :user_id, :value => current_user.id %>
   <%= form.submit params[:action] == 'new' ? 'Save' : 'Update', class: 'btn btn-block btn-default' %>
 <% end %>
+

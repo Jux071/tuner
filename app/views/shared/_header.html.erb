@@ -2,16 +2,17 @@
 <nav class="navbar navbar-default">
 	<ul class="nav navbar-nav">
   <a class="navbar-brand">TUNER</a>
+    <li><%= link_to "Artists", artists_path %></li>
     <li><%= link_to "Tracks", tracks_path %></li>
     <li><%= link_to "Albums", albums_path %></li>
     <li><%= link_to "Genres", genres_path %></li>
-    <li><%= link_to "Playlists", tracks_path %></li>
-    <li><%= link_to "Favorites", tracks_path %></li>
+    <li><%= link_to "Playlists", playlists_path %></li>
+    <li><%= link_to "Favorites", favorite_tracks_path %></li>
 
   <form class="navbar-form navbar-left">
     <div class="form-group">
     <%= form_tag(tracks_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search" %>
+<%= text_field_tag :search, params[:search], placeholder: "Search tracks" %>
 <%= submit_tag "Search" %>
 <% end %>
 

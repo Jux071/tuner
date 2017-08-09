@@ -9,7 +9,10 @@ Rails.application.routes.draw do
 	resources :users, only: [:new, :create, :show]
 	resource :session, only: [:new, :create, :destroy]
 	resources :albums
-	resources :favorite_tracks, only: [:create, :destroy]
+	#resources :favorite_tracks, only: [:create, :destroy, :show]
+	#resources :track_playlists, only: [:create, :destroy]
+	resources :track_playlists
+	resources :favorite_tracks
 
 	#resources :tracks do
   #put :favorite, on: :member
@@ -24,4 +27,6 @@ Rails.application.routes.draw do
 	resources :tracks
 	resources :artists
 	resources :genres
+	resources :playlists
+
 end
