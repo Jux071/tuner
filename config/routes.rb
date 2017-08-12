@@ -10,8 +10,8 @@ Rails.application.routes.draw do
 	resource :session, only: [:new, :create, :destroy]
 	resources :albums
 	#resources :favorite_tracks, only: [:create, :destroy, :show]
-	#resources :track_playlists, only: [:create, :destroy]
-	resources :track_playlists
+	resources :track_playlists, only: [:create, :destroy]
+	#resources :track_playlists
 	resources :favorite_tracks
 
 	#resources :tracks do
@@ -28,5 +28,11 @@ Rails.application.routes.draw do
 	resources :artists
 	resources :genres
 	resources :playlists
+
+	resources :tracks do
+		collection do
+			get :newest
+		end
+	end
 
 end

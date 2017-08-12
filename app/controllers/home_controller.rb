@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 
 	def index
 		@title = 'Welcome to Tuner'
-		@albums = Album.all
+		@tracks = Track.all.order('created_at ASC')
 	end
 
 end

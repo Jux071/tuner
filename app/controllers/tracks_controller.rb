@@ -12,7 +12,6 @@ class TracksController < ApplicationController
 
 def index
 	@tracks = Track.search(params[:search])
-	@albums = Album.all
 end
 
 
@@ -44,7 +43,7 @@ end
 	end
 
 	def show
-		
+
 	end
 
 	def destroy
@@ -53,6 +52,9 @@ end
 		redirect_to tracks_path
 	end
 
+	def newest
+		@tracks = Track.newest
+	end
 
 
 	private
@@ -65,18 +67,4 @@ end
 		@track = Track.find(params[:id])
 	end
 
-#def favorite
-#    type = params[:type]
-#    if type == "favorite"
-#      current_user.favorites << @track
-#      redirect_to :back, notice: '#{@track.name} added to favorites'
-
- #   elsif type == "unfavorite"
-#      current_user.favorites.delete(@track)
- #     redirect_to :back, notice: '#{@track.name} removed from favorites'
-
-#    else
-#      redirect_to :back, notice: 'Nothing happened.'
- #   end
-#end
 end

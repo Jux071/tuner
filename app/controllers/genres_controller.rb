@@ -1,23 +1,32 @@
 class GenresController < ApplicationController
 	before_action :find_genre, { only: [:edit, :update, :show, :destroy]}
 
+
 	def index
 		@genre = Genre.all
 		@albums = Album.all
 	end
 
 	def new
-		@genre = Genre.new		
+		@genre = Genre.new
 	end
 
 	def create
 		@genre = Genre.new(genre_params)
 
+		#respond_to do |format|
 		if @genre.save
 			flash[:success] = 'Genre created successfully'
+			#format.html { redirect_to @genre, notice: 'Product was successfully created.' }
+      #format.json { render json: @genre, status: :created, location: @genre }
+      #format.js
 			redirect_to genres_path
 		else
+			flash[:notice] = 'Error'
 			render :new
+			#format.html { render action: "new" }
+      #format.json { render json: @genre.errors, status: :unprocessable_entity }
+      #format.js
 		end
 	end
 

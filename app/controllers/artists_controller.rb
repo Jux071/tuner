@@ -3,7 +3,6 @@ class ArtistsController < ApplicationController
 
 	def index
 		@artist = Artist.all
-		@albums = Album.all
 	end
 
 	def new
@@ -34,16 +33,16 @@ class ArtistsController < ApplicationController
 	end
 
 	def show
-		@tracks = @artist.tracks
+		@tracks = @artist.tracks.limit(10)
 	end
 
 	def destroy
-		if @artist.user_id = current_user.user_id
+		if @artist.user_id == current_user
 			@artist.destroy
 			flash[:success] = "Artist deleted!"
 			redirect_to artists_path
 		else
-			flash[:danger] = "You are not authorized to delete artist!"
+			flash[:notice] = "You are not authorized to delete artist!"
 		end
 	end
 

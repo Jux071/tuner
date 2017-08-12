@@ -4,7 +4,6 @@ class FavoriteTracksController < ApplicationController
   def index
     @favorites = current_user.favorite_tracks.count
     @tracks = current_user.favorite_tracks
-    @albums = Album.all
   end
 
   def create

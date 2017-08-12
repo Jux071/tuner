@@ -5,11 +5,12 @@
   <br>
   <%= form.label :title %>
 	<%= form.text_field :title, class: 'form-control' %>
+	<%= error_for :title, @album.errors %>
 	<br>
 	<%= form.label :genre_id %>
   <%= form.collection_select :genre_id, Genre.all, :id, :name, { prompt: 'Choose genre'}, class: 'form-control' %>
   <%= error_for :genre, @album.errors %>
-
+  
   <br>
 	<%= form.label :released %>
 	<%= form.text_field :released, class: 'form-control' %>

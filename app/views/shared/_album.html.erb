@@ -1,4 +1,4 @@
-<% @albums.each do |album| %>
+<% Album.all.each.order(created_at: :desc).limit(2) do |album| %>
 <tr>
   <td><%= album.artist.name %></td>
 	<td><%= album.title %></td>

@@ -13,10 +13,11 @@ class Track < ApplicationRecord
 	validates_presence_of :name, :duration
 	validates_length_of :name, maximum: 30
 
+	scope :newest, -> { order(created_at: :desc) }
+
 	def self.search(search)
 		where("name LIKE ?", "%#{search}%") 
     #where("artist LIKE ?", "%#{search}%")
-
 	end
 
 	

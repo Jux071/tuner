@@ -5,7 +5,10 @@ class TrackPlaylistsController < ApplicationController
 		#@orders = Order.where(user: current_user) ova metoda se rjedje koristi
 		#@playlist_tracks = @playlist.tracks
 		@playlist_tracks = Playlist.joins(:tracks)
-		@albums = Album.all
+
+    @favorites = current_user.favorite_tracks.count
+    @tracks = current_user.favorite_tracks
+
 	end
 
   def create

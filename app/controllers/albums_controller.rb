@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
-
 	before_action :find_album, { only: [:edit, :update, :show, :destroy] }
+	
 	def index
 		@albums = Album.all
 	end
@@ -11,6 +11,12 @@ class AlbumsController < ApplicationController
 
 	def create
 		@album = Album.new(album_params)
+		@genre = Genre.new
+
+		respond_to do |format|
+    format.html  # index.html.erb
+    format.json  { render :json => @genre }
+  end
 
 		if @album.save
 			flash[:notice] = 'Album created successfully'
@@ -45,10 +51,6 @@ class AlbumsController < ApplicationController
 
 
 	private
-
-	#def album_params
-	#	params.require(:album).permit(:title, :released, :description, :artist_id, :genre_id, :cover, :user_id)		
-	#end
 
 	def album_params
      params.require(:album).permit(:title, :released, :description, :artist_id, :genre_id, :cover, :user_id)

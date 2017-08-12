@@ -13,6 +13,8 @@ class SessionsController < ApplicationController
 				
 			if current_user.admin?
 			redirect_to admin_dashboard_path
+		elsif current_user.superadmin?
+			redirect_to admin_dashboard_path
 		else
 			redirect_to user
 		end
