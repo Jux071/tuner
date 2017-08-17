@@ -21,6 +21,7 @@ end
 
 	def create
 		@track = Track.new(track_params)
+
 		if @track.save
 			flash[:success] = 'Track created successfully'
 			redirect_to tracks_path
