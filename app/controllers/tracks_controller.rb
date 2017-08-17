@@ -56,6 +56,22 @@ end
 		@tracks = Track.newest
 	end
 
+	def add_to_playlist
+  @track = Track.find(params[:id])
+  @playlist = current_user.playlists.where(id: params[:playlist_id]).first
+  if @playlist.blank?
+    respond_to do |format|
+    format.html { redirect_to playlists_path, notice:'Create your first playlist to add videos' }
+    end 
+  else
+    @track.playlists << @playlist
+    @playlist.save 
+    respond_to do |format|
+      format.html { redirect_to tracks_path, notice: 'Video was successfully added to the playlist.' }
+    end
+  end
+end   
+
 
 	private
 

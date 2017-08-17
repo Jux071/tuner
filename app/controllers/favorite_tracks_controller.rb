@@ -4,13 +4,14 @@ class FavoriteTracksController < ApplicationController
   def index
     @favorites = current_user.favorite_tracks.count
     @tracks = current_user.favorite_tracks
+    @fav = Track.joins(:favorites)
   end
 
   def create
     if Favorite.create(track: @track, user: current_user)
       redirect_to tracks_path, notice: "#{@track.name} added to favorites"
     else
-      redirect_to tracks_path, alert: 'Something went wrong!!!'
+      redirect_to tracks_path, alert: "Something went wrong!!!"
     end
   end
   

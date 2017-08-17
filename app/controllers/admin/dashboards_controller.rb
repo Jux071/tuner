@@ -6,7 +6,7 @@ class Admin::DashboardsController < Admin::BaseController
 	end
 
 	def show
-		@tracks = Track.all.order('created_at ASC')
+		@tracks = Track.all.order('created_at ASC').paginate(:page => 1, :per_page => 10)
 	end
 
 end

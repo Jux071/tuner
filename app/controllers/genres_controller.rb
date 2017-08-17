@@ -43,7 +43,7 @@ class GenresController < ApplicationController
 	end
 
 	def show
-		
+		@tracks = @genre.tracks
 	end
 
 	def destroy

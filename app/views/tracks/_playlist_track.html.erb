@@ -1,0 +1,7 @@
+ <%= form_for PlaylistTrack.new, url: playlist_tracks_path do |form| %>
+    <%= form.collection_select :playlist_id, current_user.playlists, :id, :name, { prompt: 'Choose Playlist' }, class: 'form-control' %>
+    <br>
+
+    <%= form.hidden_field @tracks.ids %>
+    <%= form.submit 'Save', method: :post, remote: true, class: 'btn btn-block btn-primary' %>
+    <% end %>

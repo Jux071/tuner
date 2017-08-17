@@ -1,0 +1,28 @@
+<h1>Listing apprenticeships</h1>
+
+<table>
+  <tr>
+    <th>Playlist</th>
+    <th>Tracks</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @playlist_tracks.each do |playlist_track| %>
+  <tr>
+    <td><%= playlist_track.playlist.name %></td>
+    <td><%= playlist_track.track.name %></td>
+    <td><%= link_to 'Show', playlist_track %></td>
+    <td><%= link_to 'Edit', edit_playlist_track_path(playlist_track) %></td>
+    <td><%= link_to 'Destroy', playlist_track, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= render 'track' %>
+<br />
+
+<%= link_to 'New Apprenticeship', new_playlist_track_path %>
+<%= link_to 'New Playlist', new_playlist_path %>
+<%= link_to 'New Track', new_track_path %>

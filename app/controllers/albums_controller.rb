@@ -40,7 +40,6 @@ class AlbumsController < ApplicationController
 
 	def show
 		@tracks = @album.tracks
-		@albums = Album.top_5
 	end
 
 	def destroy

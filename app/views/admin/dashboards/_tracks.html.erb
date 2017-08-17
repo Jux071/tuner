@@ -41,7 +41,7 @@
         <h4 class="modal-title">Choose Playlist</h4>
       </div>
       <div class="modal-body">
-          <%= form_for PlaylistTrack.new, url: track_playlists_path do |form| %>
+          <%= form_for PlaylistTrack.new, url: playlist_tracks_path do |form| %>
   	<%= form.collection_select :playlist_id, Playlist.all, :id, :name, { prompt: 'Choose Playlist' }, class: 'form-control' %>
   	<br>
   	<%= form.submit 'Save', method: :post, class: 'btn btn-block btn-primary' %>

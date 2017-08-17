@@ -3,7 +3,8 @@ class PlaylistsController < ApplicationController
 
 
 	def index
-		@playlist = current_user.playlists
+		#@playlist = current_user.playlists
+		@playlists = Playlist.where(user_id: current_user.id)
 		@albums = Album.all
 	end
 
@@ -13,6 +14,7 @@ class PlaylistsController < ApplicationController
 
 	def create
 		@playlist = Playlist.new(playlist_params)
+		
 		#@playlist.user_id = current_user.user_id
 
 		if @playlist.save
@@ -37,6 +39,7 @@ class PlaylistsController < ApplicationController
 
 	def show
 		#@tracks = @playlist.tracks
+		@playlist_tracks = PlaylistTrack.all
 	end
 
 	def destroy
@@ -53,5 +56,7 @@ class PlaylistsController < ApplicationController
 
 	def find_playlist
 		@playlist = Playlist.find(params[:id])	
+		#@playlist = current_user.playlists.find(params[:playlist_id])
+		#@playlist = current_user.playlists.where(id: params[:playlist_id]).first
 	end
 end
