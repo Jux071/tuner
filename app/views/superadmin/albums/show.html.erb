@@ -1,0 +1,44 @@
+<div class="row col-md-9 col-md-offset-1">
+  <div class="panel panel-primary">
+
+  <center><%= image_tag @album.cover %></center>
+    <div class="panel-heading">
+      <h3 class="panel-title">Artist</h3>
+    </div>
+    <div class="panel-body">
+      <%= @album.artist.name %>
+    </div>
+  	<div class="panel-heading">
+    	<h3 class="panel-title">Title</h3>
+  	</div>
+  	<div class="panel-body">
+    	<%= @album.title %>
+  	</div>
+  	<div class="panel-heading">
+    	<h3 class="panel-title">Released</h3>
+  	</div>
+  	<div class="panel-body">
+    	<%= @album.released %>
+  	</div>
+    <div class="panel-heading">
+      <h3 class="panel-title">Genre</h3>
+    </div>
+    <div class="panel-body">
+      <%= @album.genre.name %>
+    </div>
+
+  	<div class="panel-heading">
+    	<h3 class="panel-title">Description</h3>
+  	</div>
+  	<div class="panel-body">
+    	<%= @album.description %>
+  	</div>
+    
+    
+    
+      <%= render 'tracks' %>
+    </div>
+		
+  <%= render 'back' %>
+  </div>
+</div> 

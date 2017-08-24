@@ -20,11 +20,11 @@
 <% end %>
 
 
-	<%= link_to edit_track_path(track), class: 'btn btn-sm btn-primary', target: :_blank do %>
+	<%= link_to edit_admin_track_path(track), class: 'btn btn-sm btn-primary', target: :_blank do %>
 <i class="glyphicon glyphicon-edit"></i> Edit
 <% end %>
 
-<%= link_to track_path(track), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger', target: :_blank do %>
+<%= link_to admin_track_path(track), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger', target: :_blank do %>
 <i class="glyphicon glyphicon-trash"></i> Delete
 <% end %>
 <%= link_to track.link, target: :_blank do %>

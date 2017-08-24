@@ -1,4 +1,5 @@
 class PlaylistsController < ApplicationController
+	before_action :authorize
 	before_action :find_playlist, { only: [:edit, :update, :show, :destroy]}
 
 

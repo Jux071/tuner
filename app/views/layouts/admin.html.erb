@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tuner</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <div class="container">
+  <body>
+   <%= render 'shared/admin_header' %>
+    
+    <div class="row">
+      <div class="col-md-3"><%= render 'shared/sidebar' %></div>
+      <div class="col-md-9"><%= yield %></div>
+    </div>
+  </body>
+  <%= render 'shared/footer' %>
+  </div>
+
+ 
+</html>

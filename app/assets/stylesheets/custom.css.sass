@@ -7,10 +7,10 @@
   margin-top: 45px
   padding-top: 5px
   border-top: 1px solid #eaeaea
-  color: #777
+  color: lightgrey
 
 .footer a 
-  color: #555
+  color: lightgrey
 
 .footer a:hover 
   color: #222
@@ -95,7 +95,7 @@ aside
 
 /* Add some shadows to create a card effect */
 .card 
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
     
 .card-text
   font-size: 40px
@@ -136,12 +136,10 @@ aside
 .glyphicon-play
   color: darkorange
 
-.body 
-  background-color: #a71b3e
-  color: white
+html, body 
+  background-color: purple
+  color: grey
   font: 14px/1.5 Helvetica, Arial, sans-serif
-  margin: 20px auto
-  width: 500px
 
 .a 
   color: #efaaca
@@ -151,3 +149,57 @@ aside
     background: lightblue
     color: #ffffff
     border-color: #ff0000
+
+// Custom Colored Panels
+
+.huge 
+    font-size: 40px
+
+.panel-green 
+    border-color: green
+    > .panel-heading 
+        border-color: green
+        color: white
+        background-color: green
+    
+    > a 
+        color: green
+        &:hover 
+            color: darken(green, 15%)
+
+.panel-red 
+    border-color: red
+    > .panel-heading 
+        border-color: red
+        color: white
+        background-color: red
+    
+    > a 
+        color: red
+        &:hover 
+            color: darken(red, 15%)
+
+.panel-orange 
+    border-color: orange
+    > .panel-heading 
+        border-color: orange
+        color: white
+        background-color: orange
+
+    > a 
+        color: orange
+        &:hover 
+            color: darken(orange, 15%)
+
+.panel-powderblue
+    border-color: powderblue
+    > .panel-heading 
+        border-color: powderblue
+        color: white
+        background-color: powderblue
+
+    > a 
+        color: powderblue
+        &:hover 
+            color: darken(powderblue, 15%)
+

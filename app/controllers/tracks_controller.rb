@@ -1,6 +1,6 @@
 class TracksController < ApplicationController
-
-	before_action :find_track, { only: [:edit, :update, :show, :destroy] }
+  before_action :authorize
+	before_action :find_track, { only: [:show] }
 	
 	#def index
 #if params[:search]
@@ -14,74 +14,14 @@ def index
 	@tracks = Track.search(params[:search])
 end
 
+def show
 
-	def new
-		@track = Track.new
-	end
+end
 
-	def create
-		@track = Track.new(track_params)
+private
 
-		if @track.save
-			flash[:success] = 'Track created successfully'
-			redirect_to tracks_path
-		else
-			flash[:notice] = 'Error'
-			render :new
-		end
-	end
-
-	def edit
-		
-	end
-
-	def update
-		if @track.update(track_params)
-			redirect_to @track
-		else
-			render :edit
-		end
-	end
-
-	def show
-
-	end
-
-	def destroy
-		@track.destroy
-		flash[:notice] = 'Track deleted'
-		redirect_to tracks_path
-	end
-
-	def newest
-		@tracks = Track.newest
-	end
-
-	def add_to_playlist
-  @track = Track.find(params[:id])
-  @playlist = current_user.playlists.where(id: params[:playlist_id]).first
-  if @playlist.blank?
-    respond_to do |format|
-    format.html { redirect_to playlists_path, notice:'Create your first playlist to add videos' }
-    end 
-  else
-    @track.playlists << @playlist
-    @playlist.save 
-    respond_to do |format|
-      format.html { redirect_to tracks_path, notice: 'Video was successfully added to the playlist.' }
-    end
-  end
-end   
-
-
-	private
-
-	def track_params
-		params.require(:track).permit(:name, :duration, :artist_id, :genre_id, :album_id, :user_id, :link)		
-	end
-
-	def find_track
-		@track = Track.find(params[:id])
-	end
+def find_track
+	@track = Track.find(params[:id])
+end
 
 end

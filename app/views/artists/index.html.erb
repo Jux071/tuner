@@ -1,6 +1,6 @@
 <div class = "row col-md-12">
 	<div class = "well well-sm">
-		<h3>Artists <%= link_to 'Add new artist', new_artist_path, class: 'btn btn-sm btn-primary' %></h3>
+		<h3>Artists</h3>
 		<% unless flash[:notice].blank? %>
 			<div class = "alert alert-success">
 				<p><%= flash[:notice] %></p>
@@ -23,3 +23,4 @@
 			</tbody>
 		</table>
 	</div>
+</div>

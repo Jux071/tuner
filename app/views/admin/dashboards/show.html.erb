@@ -1,55 +1,125 @@
 <div class="jumbotron">
-<h1>welcome to tuner</h1>
+<h1>Welcome, <%= current_user.username %></h1>
 </div>
-
 
 <div class="row">
-  <div class="column">
-    <div class="card card-inverse card-success mb-3 text-center">
-      <div class="card-block">
-        <h3 class="card-title">Total Tracks</h3>
-        <p class="card-text" style="background-color:powderblue;"><%= Track.count %></p>
+  <div class="col-lg-6 col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-3">
+            <i class="fa fa-headphones fa-5x"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="huge"><%= Track.count %></div>
+              <div>Total tracks!</div>
+            </div>
+          </div>
+        </div>
+        <a href="<%= tracks_path %>">
+        <div class="panel-footer">
+          <span class="pull-left">View Tracks</span>
+          <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+          <div class="clearfix"></div>
+        </div>
+        </a>
       </div>
     </div>
-  </div>
 
-  <div class="column">
-    <div class="card card-inverse card-info mb-3 text-center">
-      <div class="card-block">
-        <h3 class="card-title">Total Albums</h3>
-        <p class="card-text" style="background-color:lightgreen;"><%= Album.count %></p>
-      </div>
-    </div>
-  </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-music fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><%= Album.count %></div>
+                                    <div>Total albums!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="<%= albums_path %>">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Albums</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-orange">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-hand-spock-o fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><%= Genre.count %></div>
+                                    <div>Total Genres!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="<%= genres_path %>">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Genres</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
 
-  <div class="column">
-    <div class="card card-inverse card-warning mb-3 text-center">
-      <div class="card-block">
-        <h3 class="card-title">Total Genres</h3>
-        <p class="card-text" style="background-color:lightpink;"><%= Genre.count %></p>        
-      </div>
-    </div>
-  </div>
+<div class="col-lg-4 col-md-6">
+                    <div class="panel panel-powderblue">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-microphone fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><%= Artist.count %></div>
+                                    <div>Total Artists!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="<%= artists_path %>">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Artists</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
 
- <div class="column">
-    <div class="card card-inverse card-warning mb-3 text-center">
-      <div class="card-block">
-        <h3 class="card-title">Registered Users</h3>
-        <p class="card-text" style="background-color:orange;"><%= User.count %></p> 
-          
-      </div>
-    </div>
-  </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-users fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><%= User.count %></div>
+                                    <div>Registered Users!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a>
+                            <div class="panel-footer">
+                                <span class="pull-left"></span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-  <div class="column">
-    <div class="card card-inverse card-warning mb-3 text-center">
-      <div class="card-block">
-        <h3 class="card-title">Total Artists</h3>
-        <p class="card-text" style="background-color:lightgrey;"><%= Artist.count %></p>        
-      </div>
-    </div>
-  </div>
-</div>
+
+
 
 
 <!-- Button trigger modal -->
@@ -78,7 +148,7 @@
 </div><!-- /.modal -->
 
 
-<%= link_to 'New album', new_album_path, class: "btn btn-default" %>
+<%= link_to 'New album', new_admin_album_path, class: "btn btn-default" %>
 
 <div class = "row col-md-12">
   

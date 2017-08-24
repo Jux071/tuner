@@ -24,15 +24,29 @@ class ApplicationController < ActionController::Base
 
   helper_method :admin?
 
+  def superadmin?
+    current_user.role == 2    
+  end
+
+  helper_method :superadmin?
+
+  protected
+
   def authorize
-  	redirect_to new_session_path unless current_user
-  	
+  	redirect_to new_session_path unless current_user  	
   end
 
   def authorize_for_admins
   	unless current_user.admin?
-  		flash[:notice] = 'Unauthorized access, you shall not pass!'
+  		flash[:danger] = 'Unauthorized access, you shall not pass!'
       redirect_to root_path
     end
-end
+  end
+
+  def authorize_for_superadmins
+    unless current_user.superadmin?
+      flash[:danger] = 'Unauthorized access, you shall not pass!'
+      redirect_to root_path
+    end
+  end
 end

@@ -1,0 +1,26 @@
+<div class = "row col-md-12">
+	<div class = "well well-sm">
+		<h3>Artists <%= link_to 'Add new artist', new_admin_artist_path, class: 'btn btn-sm btn-primary' %></h3>
+		<% unless flash[:notice].blank? %>
+			<div class = "alert alert-success">
+				<p><%= flash[:notice] %></p>
+			</div>
+		<% end %>
+	</div>	
+
+	<div class="panel panel-default">  
+  <div class="panel-heading"><strong>Artist details</strong></div>
+  	<table class="table table-hover table-striped">	
+			<thead>
+				<tr>
+	    		<th>Artist</th>
+	     		<th>Actions</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<%= render @artist.order(name: :asc) %>
+			</tbody>
+		</table>
+	</div>
+</div>

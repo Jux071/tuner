@@ -1,0 +1,8 @@
+<tr>
+  <td><%= link_to genre.name, admin_genre_path(genre) %></td>
+	
+	<% if logged_in? %>
+	<td><%= link_to ' Edit', edit_admin_genre_path(genre), class: ' btn btn-sm btn-primary' %>
+			<%= link_to ' Delete', admin_genre_path(genre), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' %></td>
+			<% end %>
+</tr>

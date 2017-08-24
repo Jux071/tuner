@@ -16,14 +16,10 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-$(document).ready(function () {
-    $('#myModal').on('show.bs.modal', function (event) {
-        console.log($(event.relatedTarget).attr('track_id'));
-    });
-});
-
-
-
-$('#myModal').on('show.bs.modal', function (event) {
-    alert($(event.relatedTarget).attr('track_id'));
+$(document).on("click", ".open-myModal", function () {
+     var myTrackId = $(this).data('id');
+     $(".modal-body #track_id").val( myTrackId );
+     // As pointed out in comments, 
+     // it is superfluous to have to manually call the modal.
+     // $('#addBookDialog').modal('show');
 });
