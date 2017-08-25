@@ -5,11 +5,7 @@
 	<td><%= link_to track.artist.name, artist_path(track.artist_id) %></td>
 	<td><%= link_to track.genre.name, genre_path(track.genre_id) %></td>
 	<td><%= link_to track.album.title, album_path(track.album_id) %></td>	
-	
-
-
-	<% if logged_in? %>
-<td>	<% unless current_user.favorite_tracks.exists?(id: track.id) %>
+	<td>	<% unless current_user.favorite_tracks.exists?(id: track.id) %>
 <%= link_to favorite_tracks_path(track_id: track), method: :post do %>
 <i class="glyphicon glyphicon-heart-empty gi-2x" role="button" aria-hidden="true"></i>
 <% end %>
@@ -18,18 +14,24 @@
 <i class="glyphicon glyphicon-heart gi-2x" role="button" aria-hidden="true"></i>
 <% end %>
 <% end %>
-
-
-	<%= link_to edit_track_path(track), class: 'btn btn-sm btn-primary', target: :_blank do %>
-<i class="glyphicon glyphicon-edit"></i> Edit
-<% end %>
-
-<%= link_to track_path(track), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger', target: :_blank do %>
-<i class="glyphicon glyphicon-trash"></i> Delete
-<% end %>
 <%= link_to track.link, target: :_blank do %>
 <span class="glyphicon glyphicon-play gi-2x" role="button" aria-hidden="true"></span>
 <% end %>
+</td>
+
+
+	<% if current_user.admin? && current_user.superadmin? %>
+<td>
+
+
+	<%= link_to edit_admin_track_path(track), class: 'btn btn-sm btn-primary', target: :_blank do %>
+<i class="glyphicon glyphicon-edit"></i> Edit
+<% end %>
+
+<%= link_to admin_track_path(track), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger', target: :_blank do %>
+<i class="glyphicon glyphicon-trash"></i> Delete
+<% end %>
+
 		
 
 </td>

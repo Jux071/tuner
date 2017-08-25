@@ -24,7 +24,7 @@
 
     <% if current_user.playlists.first.nil? %>
       <td>
-        <a data-toggle="modal" href="#myModal" class="btn btn btn-danger">Add New playlist</a>
+        <a data-toggle="modal" href="#myModal" class="btn btn-sm btn-danger">Add New playlist</a>
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -50,35 +50,12 @@
       </td>
     <% else %>
       <td>
-        <a data-toggle="modal" href="#myModal" class="btn btn-danger">Add To playlist</a>
-        <button type="button" data-toggle="modal" data-target="#myModal">Open Modal</button>
-        <!-- Modal -->
-        <div id="myModal" class="modal fade" role="dialog">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <%= form_for PlaylistTrack.new, remote: true do |form| %>
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Add track "<%= track.name %>" to playlist</h4>
-                </div>
-                <div class="modal-body">
-                  <%= form.label :playlist_id %>
-                  <%= form.collection_select :playlist_id, current_user.playlists, :id, :name, { prompt: 'Choose Playlist' }, class: 'form-control' %>
-                  <br>
-                  <%= form.hidden_field :track_id, :value => track.id %>
-                </div>
-                <div class="modal-footer">
-                  <%= form.submit 'Save', class: 'btn btn-primary' %>
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-              <% end %>
-            </div>
-          </div>
+        <a data-toggle="modal" data-target="#addTrack" data-id="<%= track.id %>" title="Add this track to playlist" class="open-AddTrack btn btn-sm btn-success" href="#addTrack">Add to playlist</a>
+
+        <div class="modal fade" id="addTrack">
+          <%= render 'shared/modal' %>
         </div>
       </td>
     <% end %>
   <% end %>
-  <td>
-    <%= link_to 'Add', playlist_tracks_path(track_id: track.id, playlist_id: current_user.playlists.first.id), method: :post, remote: true, class: 'btn btn-sm btn-success' %>
-  </td>
 </tr>

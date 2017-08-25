@@ -15,9 +15,6 @@
 				<td><%= track.duration %></td>		
 				<td>
 				<% if logged_in? %>
-					
-		
-
 					<% unless current_user.favorite_tracks.exists?(id: track.id) %>
 						<%= link_to favorite_tracks_path(track_id: track), method: :post do %>
 						<span class="glyphicon glyphicon-heart-empty gi-2x" role="button" aria-hidden="true"></span>
@@ -27,11 +24,15 @@
 						<span class="glyphicon glyphicon-heart gi-2x" role="button" aria-hidden="true"></span>
 						<% end %>
 					<% end %>
-				<% end %>
+				
 					<%= link_to track.link, target: :_blank do %>
 					<span class="glyphicon glyphicon-play gi-2x" role="button" aria-hidden="true"></span>
 					<% end %>
 				</td>
+				<td>
+					<%= link_to 'Remove from playlist', playlist_track_path(track_id: track.id, playlist_id: @playlist.id), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' %>
+				</td>
+				<% end %>
 			</tr>
 		<% end %>
 		</tbody>

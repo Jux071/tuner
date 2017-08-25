@@ -23,24 +23,43 @@ end
 		@track = Track.new(track_params)
 
 		if @track.save
-			flash[:success] = 'Track created successfully'
-			redirect_to [:admin, @track]
+			respond_to do |format|
+        format.html { redirect_to [:admin, @track] }
+        format.js
+      end
+		#	flash[:success] = 'Track created successfully'
+		#	redirect_to [:admin, @track]
 		else
-			flash[:notice] = 'Error'
-			render :new
+			respond_to do |format|
+        format.html { render :edit }
+        format.js
+      end
+      #flash[:notice] = 'Error'
+			#render :new
 		end
 	end
 
 	def edit
-		
+		@track = Track.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
 	end
 
 	def update
 		if @track.update(track_params)
-			redirect_to [:admin, @track]
-		else
-			render :edit
-		end
+			respond_to do |format|
+        format.html { redirect_to [:admin, @track] }
+        format.js
+      end
+    else			
+			respond_to do |format|
+        format.html { render :edit }
+        format.js
+      end
+    end
 	end
 
 	def show

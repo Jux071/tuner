@@ -15,11 +15,3 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
-
-$(document).on("click", ".open-myModal", function () {
-     var myTrackId = $(this).data('id');
-     $(".modal-body #track_id").val( myTrackId );
-     // As pointed out in comments, 
-     // it is superfluous to have to manually call the modal.
-     // $('#addBookDialog').modal('show');
-});
