@@ -3,7 +3,7 @@
 	<td><%= link_to album.title, admin_album_path(album) %></td>
 	<td><%= album.released %></td>
 	<td><%= link_to album.genre.name, admin_genre_path(album.genre_id) %></td>			
-	<% if logged_in? %>
+	<% if current_user.admin? %>
 		<td>
 			<%= link_to ' Edit', edit_admin_album_path(album), class: ' btn btn-sm btn-primary' %>
 			<%= link_to ' Delete', admin_album_path(album), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' %>

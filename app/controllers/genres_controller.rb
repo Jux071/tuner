@@ -1,5 +1,5 @@
 class GenresController < ApplicationController
-	before_action :authorize
+	before_action :authorize_for_users
 	before_action :find_genre, { only: [:show]}
 
 

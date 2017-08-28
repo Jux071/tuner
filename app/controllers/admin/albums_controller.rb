@@ -1,5 +1,5 @@
 class Admin::AlbumsController < Admin::BaseController
-	before_action :authorize
+	before_action :authorize_for_admins
 	before_action :find_album, { only: [:edit, :update, :show, :destroy] }
 	
 	def index

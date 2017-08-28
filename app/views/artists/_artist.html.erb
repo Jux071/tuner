@@ -1,3 +1,5 @@
 <tr>
   <td><%= link_to artist.name, artist_path(artist) %></td>
+  <td><%= artist.albums.count %></td>
+  <td><%= artist.tracks.count %></td>
 </tr>

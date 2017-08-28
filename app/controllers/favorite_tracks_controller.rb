@@ -5,7 +5,6 @@ class FavoriteTracksController < ApplicationController
   def index
     @favorites = current_user.favorite_tracks.count
     @tracks = current_user.favorite_tracks
-    @fav = Track.joins(:favorites)
   end
 
   def create

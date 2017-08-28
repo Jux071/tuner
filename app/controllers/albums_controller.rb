@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-	before_action :authorize
+	before_action :authorize_for_users
 	before_action :find_album, { only: [:show] }
 	
 	def index

@@ -1,9 +1,11 @@
-<% Track.all.order('tracks.created_at DESC').limit(5).each do |track| %>
-	<table class="table table-hover table-striped">	
-		<tbody>
-			<tr>
-				<td><%= link_to track.artist.name, artist_path(track.artist_id) %> - <%= link_to track.name, track_path(track) %></td>	
-			</tr>
-		</tbody>
-	</table>
+<% Favorite.joins("LEFT OUTER JOIN tracks ON favorites.track_id = tracks.id").select("favorites.*,tracks.name as name, tracks.artist_id as artist_id").group(:track_id).order('COUNT(tracks.id) DESC').limit(5).each do |track| %>
+	<div class="table-responsive">
+		<table class="table table-condensed">	
+			<tbody>
+				<tr>
+					<td><%= Artist.find(track.artist_id).name %> - <%= track.name %></td>	
+				</tr>
+			</tbody>
+		</table>
+	</div>
 <% end %>

@@ -1,5 +1,5 @@
 class Admin::TracksController < Admin::BaseController
-  before_action :authorize
+  before_action :authorize_for_admins
 	before_action :find_track, { only: [:edit, :update, :show, :destroy] }
 	
 	#def index
@@ -12,6 +12,7 @@ class Admin::TracksController < Admin::BaseController
 
 def index
 	@tracks = Track.search(params[:search])
+	@popular = Favorite.joins("LEFT OUTER JOIN tracks ON favorites.track_id = tracks.id").select("favorites.*,tracks.name as name, tracks.artist_id as artist_id").group(:track_id).order('COUNT(tracks.id) DESC').limit(5)
 end
 
 

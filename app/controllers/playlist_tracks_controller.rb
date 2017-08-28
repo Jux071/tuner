@@ -1,5 +1,5 @@
 class PlaylistTracksController < ApplicationController
-  before_action :authorize
+  before_action :authorize_for_users
 
   # def index
   #   @playlist_tracks = PlaylistTrack.all

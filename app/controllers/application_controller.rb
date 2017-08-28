@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def index
-    @albums = Album.all    
+    @albums = Album.all
+    @tracks = Track.all  
   end
 
   def current_user
@@ -34,6 +35,14 @@ class ApplicationController < ActionController::Base
 
   def authorize
   	redirect_to new_session_path unless current_user  	
+  end
+
+  def authorize_for_users
+    if current_user.admin?
+      redirect_to admin_dashboard_path
+    elsif current_user.superadmin?
+      redirect_to superadmin_dashboard_path
+    end
   end
 
   def authorize_for_admins

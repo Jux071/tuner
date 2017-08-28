@@ -16,7 +16,7 @@
             </div>
           </div>
         </div>
-        <a href="<%= tracks_path %>">
+        <a href="<%= admin_tracks_path %>">
         <div class="panel-footer">
           <span class="pull-left">View Tracks</span>
           <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="<%= albums_path %>">
+                        <a href="<%= admin_albums_path %>">
                             <div class="panel-footer">
                                 <span class="pull-left">View Albums</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="<%= genres_path %>">
+                        <a href="<%= admin_genres_path %>">
                             <div class="panel-footer">
                                 <span class="pull-left">View Genres</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -84,7 +84,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="<%= artists_path %>">
+                        <a href="<%= admin_artists_path %>">
                             <div class="panel-footer">
                                 <span class="pull-left">View Artists</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -117,64 +117,3 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-
-<!-- Button trigger modal -->
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-       Body
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
-<%= link_to 'New album', new_admin_album_path, class: "btn btn-default" %>
-
-<div class = "row col-md-12">
-  
-  <div class="panel panel-default">  
-  <div class="panel-heading"><strong>Track details</strong></div>
-    <table class="table table-hover table-striped"> 
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Duration</th>
-          <th>Artist</th>
-          <th>Genre</th>
-          <th>Album</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-
-      <tbody>
-
-<%= render 'tracks' %>
-
-<% unless @tracks.empty? %>
-  <%= will_paginate @tracks %>
-<% end %>
-
-</tbody>
-    </table>
-  </div>
-</div>

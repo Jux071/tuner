@@ -1,19 +1,19 @@
 <div class="panel-heading">Tracks <span class="badge"><%= @album.tracks.count %></span>
-</div>      
-  <table class = 'table table-striped table-hover'>
-    <thead>
+</div>
+<table class = 'table table-striped table-hover'>
+	<thead>
+		<tr>
+    	<th>Name</th>
+    	<th>Duration</th>
+    	<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @tracks.each do |track| %>
 			<tr>
-    		<th>Name</th>
-    		<th>Duration</th>
-    		<th>Actions</th>
-			</tr>
-		</thead>
-		<tbody>
-      <% @tracks.each do |track| %>
-				<tr>
-					<td><%= link_to track.name, track_path(track) %></td>	
-					<td><%= track.duration %></td>		
-					<td>
+				<td><%= link_to track.name, track_path(track) %></td>	
+				<td><%= track.duration %></td>		
+				<td>
 					<% if logged_in? %>
 						<% unless current_user.favorite_tracks.exists?(id: track.id) %>
 							<%= link_to favorite_tracks_path(track_id: track), method: :post do %>
@@ -24,13 +24,24 @@
 								<span class="glyphicon glyphicon-heart gi-2x" role="button" aria-hidden="true"></span>
 							<% end %>
 						<% end %>
-						<%= link_to 'Add to Playlist', edit_track_path(track), class: 'btn btn-sm btn-success' %>
 						<%= link_to track.link, target: :_blank do %>
 							<span class="glyphicon glyphicon-play gi-2x" role="button" aria-hidden="true"></span>
 						<% end %>
-					<% end %>
-					</td>
-				</tr>
-			<% end %>
-		</tbody>
-  </table>
+						<% if current_user.playlists.first.nil? %>
+      				<td>
+        				<a data-toggle="modal" href="#myModal" class="btn btn-sm btn-danger">Add New playlist</a>
+        				<%= render 'shared/new_playlist' %>
+      				</td>
+    				<% else %>
+      				<td>
+        				<a data-toggle="modal" data-target="#addTrack" data-id="<%= track.id %>" title="Add this track to playlist" class="open-AddTrack btn btn-sm btn-success" href="#addTrack">Add to playlist</a>
+								<div class="modal fade" id="addTrack">
+          				<%= render 'shared/modal' %>
+        				</div>
+      				</td>
+    				<% end %>
+  				<% end %>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
