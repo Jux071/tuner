@@ -11,7 +11,7 @@
 		<tbody>
       <% @tracks.each do |track| %>
 				<tr>
-					<td><%= link_to track.name, track_path(track) %></td>	
+					<td><%= link_to track.name, superadmin_track_path(track) %></td>	
 					<td><%= track.duration %></td>		
 					<td>
 
@@ -25,15 +25,15 @@
 <span class="glyphicon glyphicon-heart gi-2x" role="button" aria-hidden="true"></span>
 <% end %>
 <% end %>
-<%= link_to 'Add to Playlist', edit_track_path(track), class: 'btn btn-sm btn-success' %>
-  <%= link_to edit_track_path(track), class: 'btn btn-sm btn-primary', target: :_blank do %>
+<%= link_to 'Add to Playlist', edit_superadmin_track_path(track), class: 'btn btn-sm btn-success' %>
+  <%= link_to edit_superadmin_track_path(track), class: 'btn btn-sm btn-primary', target: :_blank do %>
 <i class="glyphicon glyphicon-edit"></i> Edit
 <% end %>
 
 
 
 	
-			<%= link_to ' Delete', track_path(track), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' %>
+			<%= link_to ' Delete', superadmin_track_path(track), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' %>
 				
 			<% end %>
 

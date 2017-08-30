@@ -10,4 +10,9 @@ class Album < ApplicationRecord
 
 	scope :top5, -> { order(created_at: :desc) }
 
+	def self.search(search)
+		where("title LIKE ?", "%#{search}%") 
+    #where("artist LIKE ?", "%#{search}%")
+	end
+
 end

@@ -1,10 +1,10 @@
 <tr>
-  <td><%= link_to album.artist.name, artist_path(album.artist_id) %></td>
-	<td><%= link_to album.title, album_path(album) %></td>
+  <td><%= link_to album.artist.name, superadmin_artist_path(album.artist_id) %></td>
+	<td><%= link_to album.title, superadmin_album_path(album) %></td>
 	<td><%= album.released %></td>
-	<td><%= link_to album.genre.name, genre_path(album.genre_id) %></td>			
+	<td><%= link_to album.genre.name, superadmin_genre_path(album.genre_id) %></td>			
 	<% if logged_in? %>
-	<td><%= link_to ' Edit', edit_album_path(album), class: ' btn btn-sm btn-primary' %>
-			<%= link_to ' Delete', album_path(album), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' %></td>
+	<td><%= link_to ' Edit', edit_superadmin_album_path(album), class: ' btn btn-sm btn-primary' %>
+			<%= link_to ' Delete', superadmin_album_path(album), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' %></td>
 			<% end %>
 </tr>

@@ -1,9 +1,19 @@
-<div class = "row col-md-12">
-	<div class = "well">
-		<h3>Tracks <%= link_to 'Add new track', new_track_path, class: 'btn btn-sm btn-primary' %></h3>
+<% provide(:title, "Tracks") %>
+<div class = "well well-sm">
+		<h3>Tracks <%= link_to 'Add new track', new_superadmin_track_path, class: 'btn btn-sm btn-primary' %></h3>
 	</div>		
 	<div class="panel panel-default">  
-  <div class="panel-heading"><strong>Track details</strong></div>
+  <div class="panel-heading">
+  <div class="form-group">
+      <%= form_tag(superadmin_tracks_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search tracks" %>
+        <%= submit_tag "Search" %>
+      <% end %>
+      </form>
+      </div>
+
+
+
   	<table class="table table-hover table-striped">	
 			<thead>
 				<tr>
@@ -24,6 +34,8 @@
 				<%= render @tracks.order(name: :asc) %>
 				
 			</tbody>
+
 		</table>
+		<center><%= will_paginate @tracks %></center>
 	</div>
 </div>

@@ -4,5 +4,11 @@ class Artist < ApplicationRecord
 	has_many :albums, dependent: :destroy
 	has_many :tracks, dependent: :destroy
 
-	validates :name, presence: true, length: { maximum: 30 }
+	validates :name, presence: true, length: { maximum: 35 }
+
+	def self.search(search)
+		where("name LIKE ?", "%#{search}%") 
+    #where("artist LIKE ?", "%#{search}%")
+	end
+	
 end

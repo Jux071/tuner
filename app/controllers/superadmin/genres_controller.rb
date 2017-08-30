@@ -1,5 +1,5 @@
 class Superadmin::GenresController < Superadmin::BaseController
-	before_action :authorize
+	before_action :authorize_for_superadmins
 	before_action :find_genre, { only: [:edit, :update, :show, :destroy]}
 
 

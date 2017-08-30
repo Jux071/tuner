@@ -1,9 +1,10 @@
 class Superadmin::ArtistsController < Superadmin::BaseController
-	before_action :authorize
+	before_action :authorize_for_superadmins
 	before_action :find_artist, { only: [:edit, :update, :show, :destroy]}
 
 	def index
-		@artist = Artist.all
+		#@artist = Artist.all
+		@artists = Artist.search(params[:search])
 	end
 
 	def new

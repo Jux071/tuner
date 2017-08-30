@@ -26,4 +26,17 @@ module ApplicationHelper
     image_tag(gravatar_url, alt: user.username, class: "gravatar")
   end
 
+  def controller?(*controller)
+    controller.include?(params[:controller])
+  end
+
+  def full_title(page_title = '')
+    base_title = "Tuner"
+    if page_title.empty?
+      base_title
+    else
+      page_title + " - " + base_title
+    end
+  end
+
 end

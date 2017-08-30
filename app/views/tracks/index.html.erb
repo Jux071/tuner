@@ -1,9 +1,11 @@
+<% provide(:title, "Tracks") %>
 <div class = "row col-md-12">
 	<div class = "well">
 		<h3>Tracks</h3>
 	</div>		
 	<div class="panel panel-default">  
   <div class="panel-heading"><strong>Track details</strong></div>
+
   	<table class="table table-hover table-striped table-responsive">	
 			<thead>
 				<tr>
@@ -24,5 +26,6 @@
 				<%= render @tracks.order(name: :asc) %>				
 			</tbody>
 		</table>
+		<%= will_paginate @tracks %>
 	</div>
 </div>

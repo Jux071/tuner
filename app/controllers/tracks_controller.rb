@@ -11,7 +11,7 @@ class TracksController < ApplicationController
 #end
 
 def index
-	@tracks = Track.search(params[:search])
+	@tracks = Track.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
 	@popular = Favorite.joins("LEFT OUTER JOIN tracks ON favorites.track_id = tracks.id").select("favorites.*,tracks.name as name, tracks.artist_id as artist_id").group(:track_id).order('COUNT(tracks.id) DESC').limit(5)
 end
 

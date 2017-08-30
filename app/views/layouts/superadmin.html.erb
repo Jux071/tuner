@@ -8,14 +8,10 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
-  <% if logged_in? %>
+
   <div class="container">
   <body>
-    <%= render 'shared/header' %>
-    <br>
-    <% flash.each do |message_type, message| %>
-      <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-    <% end %>
+   <%= render 'shared/superadmin_header' %>
     
     <div class="row">
       <div class="col-md-3"><%= render 'shared/sidebar' %></div>
@@ -25,12 +21,5 @@
   <%= render 'shared/footer' %>
   </div>
 
-  <% else %>
-  <div class="container">
-  <body>        
-    <%= yield %>    
-  </body>
-  <%= render 'shared/footer' %>
-  </div>
- <% end %>
+ 
 </html>

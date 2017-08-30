@@ -3,7 +3,8 @@ class Admin::AlbumsController < Admin::BaseController
 	before_action :find_album, { only: [:edit, :update, :show, :destroy] }
 	
 	def index
-		@albums = Album.all
+		#@albums = Album.all
+		@albums = Album.search(params[:search])
 	end
 
 	def new

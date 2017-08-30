@@ -1,6 +1,7 @@
+<% provide(:title, "Albums") %>
 <div class = "row col-md-12">
 	<div class = "well well-sm">
-		<h3>Albums <%= link_to 'Add new album', new_album_path, class: 'btn btn-sm btn-primary' %></h3>
+		<h3>Albums <%= link_to 'Add new album', new_superadmin_album_path, class: 'btn btn-sm btn-primary' %></h3>
 		<% unless flash[:notice].blank? %>
 			<div class = "alert alert-success">
 				<p><%= flash[:notice] %></p>
@@ -9,7 +10,15 @@
 	</div>	
 
 	<div class="panel panel-default">  
-  <div class="panel-heading"><strong>Album details</strong></div>
+  <div class="panel-heading">
+  	<div class="form-group">
+      <%= form_tag(superadmin_albums_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search albums" %>
+        <%= submit_tag "Search" %>
+      <% end %>
+      </form>
+
+  </div>
   	<table class="table table-hover table-striped">	
 			<thead>
 				<tr>
@@ -26,4 +35,5 @@
 			</tbody>
 		</table>
 	</div>
+</div>
 </div>

@@ -1,12 +1,14 @@
+<% provide(:title, "Home") %>
 <center>
 <div class='page-header'>
 	<h1><%= @title.upcase %></h1>
 </div>
+</center>
 	<% if logged_in? %>
 	<div class = "row col-md-12">
 	<div class="panel panel-default">  
   <div class="panel-heading"><strong>Tracks</strong></div>
-  <%= will_paginate @tracks %>
+
   	<table class="table table-hover table-striped table-responsive">	
 			<thead>
 				<tr>
@@ -28,12 +30,14 @@
 							
 			</tbody>
 		</table>
+		<%= will_paginate @tracks %>
 	</div>
 </div>
 <% end %>
 </div>
 
 <% unless logged_in? %>
+<center>
 <%= image_tag('tuner.jpg', alt: "tuner") %>
 </br>
 <%= link_to 'Sign up', signup_path, class: "btn btn-danger" %>

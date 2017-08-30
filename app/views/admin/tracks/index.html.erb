@@ -1,3 +1,4 @@
+<% provide(:title, "Tracks") %>
 <div class = "row col-md-12">
 	<div class = "well">
 		<h3>Tracks <%= link_to 'Add new track', new_admin_track_path, class: 'btn btn-sm btn-primary' %></h3>
@@ -25,5 +26,6 @@
 				
 			</tbody>
 		</table>
+		<%= will_paginate @tracks %>
 	</div>
 </div>
