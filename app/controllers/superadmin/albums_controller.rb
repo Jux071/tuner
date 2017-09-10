@@ -1,9 +1,8 @@
 class Superadmin::AlbumsController < Superadmin::BaseController
-	before_action :authorize_for_superadmins
+	#before_action :authorize_for_superadmins
 	before_action :find_album, { only: [:edit, :update, :show, :destroy] }
 	
 	def index
-		#@albums = Album.all
 		@albums = Album.search(params[:search])
 	end
 

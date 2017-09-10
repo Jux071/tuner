@@ -9,7 +9,8 @@ class FavoriteTracksController < ApplicationController
 
   def create
     if Favorite.create(track: @track, user: current_user)
-      redirect_to tracks_path, notice: "#{@track.name} added to favorites"
+      redirect_to tracks_path
+      flash[:success] = "#{@track.name} added to favorites"      
     else
       redirect_to tracks_path, alert: "Something went wrong!!!"
     end
@@ -17,7 +18,8 @@ class FavoriteTracksController < ApplicationController
   
   def destroy
     Favorite.where(track_id: @track.id, user_id: current_user.id).first.destroy
-    redirect_to tracks_path, alert: "#{@track.name} removed from favorites"
+    redirect_to tracks_path
+    flash[:danger] = "#{@track.name} removed from favorites"
   end
   
   private

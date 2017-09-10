@@ -1,5 +1,5 @@
 class PlaylistsController < ApplicationController
-	before_action :authorize
+	before_action :authorize_for_users
 	before_action :find_playlist, { only: [:edit, :update, :show, :destroy]}
 
 
@@ -39,7 +39,7 @@ class PlaylistsController < ApplicationController
 	end
 
 	def show
-		#@tracks = @playlist.tracks
+		@tracks = @playlist.tracks
 		@playlist_tracks = PlaylistTrack.all
 	end
 

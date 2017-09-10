@@ -1,9 +1,15 @@
 <tr>
+  <td><%= link_to track.link, target: :_blank do %>
+        <span class="glyphicon glyphicon-play gi-2x" role="button" aria-hidden="true"></span>
+      <% end %></td>
+
+    <td><%= link_to track.artist.name, artist_path(track.artist_id) %></td>  
 	<td><%= link_to track.name, track_path(track) %></td>	
-	<td><%= track.duration %></td>	
-	<td><%= link_to track.artist.name, artist_path(track.artist_id) %></td>
-	<td><%= link_to track.genre.name, genre_path(track.genre_id) %></td>
-	<td><%= link_to track.album.title, album_path(track.album_id) %></td>
+  <td><%= link_to track.album.title, album_path(track.album_id) %></td>
+	<td><center><%= track.duration %></center></td>	
+	
+	<td><center><%= link_to track.genre.name, genre_path(track.genre_id) %></center></td>
+	
   <% if logged_in? %>
     <td>
       <% unless current_user.favorite_tracks.exists?(id: track.id) %>
@@ -15,18 +21,15 @@
           <i class="glyphicon glyphicon-heart gi-2x" role="button" aria-hidden="true"></i>
         <% end %>
       <% end %>
-    </td>
-    <td>
-      <%= link_to track.link, target: :_blank do %>
-        <span class="glyphicon glyphicon-play gi-2x" role="button" aria-hidden="true"></span>
-      <% end %>
-    </td>
+   
+      
+   
 
     <% if current_user.playlists.first.nil? %>
-      <td>
+     
         <a data-toggle="modal" href="#myModal" class="btn btn-sm btn-danger">Add New playlist</a>
         <%= render 'shared/new_playlist' %>
-      </td>
+      
     <% else %>
       <td>
         <a data-toggle="modal" data-target="#addTrack" data-id="<%= track.id %>" title="Add this track to playlist" class="open-AddTrack btn btn-sm btn-success" href="#addTrack">Add to playlist</a>

@@ -1,9 +1,13 @@
 <% provide(:title, "Tracks") %>
-<div class = "well well-sm">
-		<h3>Tracks <%= link_to 'Add new track', new_superadmin_track_path, class: 'btn btn-sm btn-primary' %></h3>
+<div class = "well well-sm well-tracks">
+	<h3>. <%= link_to new_superadmin_track_path, class: 'btn btn-sm btn-primary' do %>
+			Add New Track  <i class="fa fa-plus"></i> 
+      <% end %>
+		</h3>
 	</div>		
 	<div class="panel panel-default">  
   <div class="panel-heading">
+  <div class=text-center>
   <div class="form-group">
       <%= form_tag(superadmin_tracks_path, :method => "get", id: "search-form") do %>
         <%= text_field_tag :search, params[:search], placeholder: "Search tracks" %>
@@ -11,7 +15,7 @@
       <% end %>
       </form>
       </div>
-
+</div>
 
 
   	<table class="table table-hover table-striped">	
@@ -22,12 +26,8 @@
 	    		<th>Artist</th>
 	    		<th>Genre</th>
 	    		<th>Album</th>
-	    		<th></th>
-	    		<th></th>
-	    		<th></th>
-	    		<th></th>
-	    		<th></th>
-				</tr>
+	    		<th>Actions</th>
+	    	</tr>
 			</thead>
 
 			<tbody>
@@ -38,4 +38,5 @@
 		</table>
 		<center><%= will_paginate @tracks %></center>
 	</div>
+</div>
 </div>

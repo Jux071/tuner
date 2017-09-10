@@ -11,7 +11,7 @@
 		<tbody>
     <% @playlist.tracks.each do |track| %>
 			<tr>
-				<td><%= link_to track.name, track_path(track) %></td>	
+				<td><%= link_to track.name, superadmin_track_path(track) %></td>	
 				<td><%= track.duration %></td>		
 				<td>
 				<% if logged_in? %>

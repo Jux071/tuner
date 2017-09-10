@@ -1,12 +1,7 @@
 <% provide(:title, "Playlists") %>
-<div class = "row col-md-12">
 	<div class = "well well-sm">
-		<h3>Playlists <%= link_to 'Add new playlist', new_playlist_path, class: 'btn btn-sm btn-primary' %></h3>
-		<% unless flash[:notice].blank? %>
-			<div class = "alert alert-success">
-				<p><%= flash[:notice] %></p>
-			</div>
-		<% end %>
+		<h3>Playlists <%= link_to 'Add new playlist', new_superadmin_playlist_path, class: 'btn btn-sm btn-primary' %></h3>
+		
 	</div>
 
 	<div class="panel panel-default">  
@@ -24,4 +19,3 @@
 			</tbody>
 		</table>
 	</div>
-</div>	

@@ -34,5 +34,8 @@ Rails.application.routes.draw do
 	resources :artists, only: [:index, :show]
 	resources :genres, only: [:index, :show]
 	resources :playlists
+	resource :about, only: [:show]
+	resource :contact, only: [:show] 
+	resource :privacy, only: [:show] 
 	
 end

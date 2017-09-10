@@ -3,99 +3,17 @@
 	<td><%= track.duration %></td>	
 	<td><%= link_to track.artist.name, superadmin_artist_path(track.artist_id) %></td>
 	<td><%= link_to track.genre.name, superadmin_genre_path(track.genre_id) %></td>
-	<td><%= link_to track.album.title, superadmin_album_path(track.album_id) %></td>	
-	
-
-
-	<% if logged_in? %>
-<td>	<% unless current_user.favorite_tracks.exists?(id: track.id) %>
-<%= link_to favorite_tracks_path(track_id: track), method: :post do %>
-<i class="glyphicon glyphicon-heart-empty gi-2x" role="button" aria-hidden="true"></i>
-<% end %>
-<% else %>
-<%= link_to favorite_track_path(track), method: :delete do %>
-<i class="glyphicon glyphicon-heart gi-2x" role="button" aria-hidden="true"></i>
-<% end %>
-<% end %>
-</td>
-
-<td><%= link_to edit_superadmin_track_path(track), class: 'btn btn-sm btn-primary' do %>
-<i class="glyphicon glyphicon-edit"></i> Edit
-<% end %></td>
-
-<td><%= link_to superadmin_track_path(track), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger', target: :_blank do %>
-<i class="glyphicon glyphicon-trash"></i> Delete
-<% end %></td>
-<td><%= link_to track.link, target: :_blank do %>
-<span class="glyphicon glyphicon-play gi-2x" role="button" aria-hidden="true"></span>
-<% end %></td>
-<% if current_user.playlists.first.nil? %>
-  <td>
-    <a data-toggle="modal" href="#myModal" class="btn btn btn-danger">Add New playlist</a>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Add New Playlist</h4>
-      </div>
-      <div class="modal-body">
-    
-          <%= form_for Playlist.new do |form| %>
-    <%= form.label :name %>
-  <%= form.text_field :name, class: 'form-control' %>
-  <br>
-  
-  <%= form.hidden_field :user_id, :value => current_user.id %>
-  <%= form.submit 'Save', method: :post, remote: true, class: 'btn btn-block btn-primary' %>
-    <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal --></td>
-
-
-<% else %>
-  <td>
-    <a data-toggle="modal" data-target="#addTrackDialog" data: { track_id: track.id } data-id="<%= track.id %>" title="Add this item" class="open-AddTrackDialog btn btn-primary" href="#addTrackDialog" >Add to playlist</a>
-
-<!-- Modal -->
-<div class="modal fade" id="addTrackDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Choose Playlist</h4>
-      </div>
-      <div class="modal-body">
-    
-          <%= form_for PlaylistTrack.new, remote: true, method: :post do |form| %>
-
-    <%= form.collection_select :playlist_id, current_user.playlists, :id, :name, { prompt: 'Choose Playlist' }, class: 'form-control' %>
-    <br>
-    <input id="track_id" name="track_id" type="hidden" value="" />
-
-
-  <%= hidden_field_tag 'track_id', '' %>
-    
-   
-    <%= form.submit 'Save', method: :post, class: 'btn btn-block btn-primary' %>
-    <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal --></td>
+	<td><%= link_to track.album.title, superadmin_album_path(track.album_id) %></td>
+  <% if current_user.id == track.user_id %>
+    <td>
+      <%= link_to edit_superadmin_track_path(track), class: 'btn btn-sm btn-primary' do %>
+        <i class="glyphicon glyphicon-edit"></i> Edit
       <% end %>
-<% end %>
-
-<td><%= link_to 'Add', playlist_tracks_path(track_id: track.id, playlist_id: current_user.playlists.first.id), method: :post, remote: true, class: 'btn btn-sm btn-success' %></td>
-</td>
-
-
+    </td>
+    <td>
+      <%= link_to superadmin_track_path(track), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' do %>
+        <i class="glyphicon glyphicon-trash"></i> Delete
+      <% end %>
+    </td>
+  <% end %>
 </tr>

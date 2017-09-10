@@ -1,5 +1,5 @@
 class Superadmin::GenresController < Superadmin::BaseController
-	before_action :authorize_for_superadmins
+	#before_action :authorize_for_superadmins
 	before_action :find_genre, { only: [:edit, :update, :show, :destroy]}
 
 
@@ -48,7 +48,7 @@ class Superadmin::GenresController < Superadmin::BaseController
 	end
 
 	def destroy
-		if @genre.user_id = current_user.user_id
+		if @genre.user_id = current_user.id
 			@genre.destroy
 			flash[:success] = "Genre deleted!"
 			redirect_to superadmin_genres_path

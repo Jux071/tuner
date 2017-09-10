@@ -1,8 +1,15 @@
 <tr>
   <td><%= link_to playlist.name, playlist_path(playlist) %></td>
-	
+  <td><center><span class="badge"><%= playlist.tracks.count %></span></center></td>
 	<% if logged_in? %>
-	<td><%= link_to ' Edit', edit_playlist_path(playlist), class: ' btn btn-sm btn-primary' %>
-			<%= link_to ' Delete', playlist_path(playlist), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' %></td>
-			<% end %>
+		<td>
+			<%= link_to edit_playlist_path(playlist), class: ' btn btn-sm btn-primary' do %>
+        <i class="glyphicon glyphicon-edit"></i> Edit
+      <% end %>
+
+      <%= link_to playlist_path(playlist), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' do %>
+        <i class="glyphicon glyphicon-trash"></i> Delete
+      <% end %>
+		</td>
+	<% end %>
 </tr>

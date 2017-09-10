@@ -3,8 +3,18 @@
 	<td><%= link_to album.title, superadmin_album_path(album) %></td>
 	<td><%= album.released %></td>
 	<td><%= link_to album.genre.name, superadmin_genre_path(album.genre_id) %></td>			
-	<% if logged_in? %>
-	<td><%= link_to ' Edit', edit_superadmin_album_path(album), class: ' btn btn-sm btn-primary' %>
-			<%= link_to ' Delete', superadmin_album_path(album), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' %></td>
+	<% if current_user.id == album.user_id %>
+		<td>
+      <%= link_to edit_superadmin_album_path(album), class: ' btn btn-sm btn-primary' do %>
+        <i class="glyphicon glyphicon-edit"></i> Edit
+      <% end %>
+   
+      <%= link_to superadmin_album_path(album), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' do %>
+        <i class="glyphicon glyphicon-trash"></i> Delete
+      <% end %>
+    </td>
+
+
+
 			<% end %>
 </tr>

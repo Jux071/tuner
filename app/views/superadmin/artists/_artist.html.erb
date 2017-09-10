@@ -1,8 +1,13 @@
 <tr>
-  <td><%= link_to artist.name, superadmin_artist_path(artist) %></td>
-	
-	<% if logged_in? %>
-	<td><%= link_to ' Edit', edit_superadmin_artist_path(artist), class: ' btn btn-sm btn-primary' %>
-			<%= link_to ' Delete', superadmin_artist_path(artist), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' %></td>
+  <td><%= link_to artist.name, superadmin_artist_path(artist) %></td>	
+	<% if current_user.id == artist.user_id %>
+		<td>
+			<%= link_to edit_superadmin_artist_path(artist), class: 'btn btn-sm btn-primary' do %>
+			<i class="glyphicon glyphicon-edit"></i> Edit
 			<% end %>
+			<%= link_to superadmin_artist_path(artist), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' do %>
+				<i class="glyphicon glyphicon-trash"></i> Delete
+			<% end %>
+		</td>
+	<% end %>
 </tr>

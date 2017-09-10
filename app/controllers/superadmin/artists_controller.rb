@@ -1,5 +1,5 @@
 class Superadmin::ArtistsController < Superadmin::BaseController
-	before_action :authorize_for_superadmins
+	#before_action :authorize_for_superadmins
 	before_action :find_artist, { only: [:edit, :update, :show, :destroy]}
 
 	def index
@@ -39,7 +39,7 @@ class Superadmin::ArtistsController < Superadmin::BaseController
 	end
 
 	def destroy
-		if @artist.user_id == current_user
+		if @artist.user_id == current_user.id
 			@artist.destroy
 			flash[:success] = "Artist deleted!"
 			redirect_to superadmin_artists_path

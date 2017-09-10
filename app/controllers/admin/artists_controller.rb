@@ -38,7 +38,7 @@ class Admin::ArtistsController < Admin::BaseController
 	end
 
 	def destroy
-		if @artist.user_id == current_user
+		if @artist.user_id == current_user.id
 			@artist.destroy
 			flash[:success] = "Artist deleted!"
 			redirect_to admin_artists_path

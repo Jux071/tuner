@@ -17,11 +17,7 @@
 	    		<th>Artist</th>
 	    		<th>Genre</th>
 	    		<th>Album</th>
-	    		<th></th>
-	    		<th></th>
-	    		<th></th>
-	    		<th></th>
-	    		<th></th>
+	    		<th>Actions</th>
 				</tr>
 			</thead>
 
@@ -30,17 +26,20 @@
 							
 			</tbody>
 		</table>
-		<%= will_paginate @tracks %>
+		<center><%= will_paginate @tracks %></center>
 	</div>
 </div>
 <% end %>
 </div>
 
 <% unless logged_in? %>
+<br>
+
 <center>
-<%= image_tag('tuner.jpg', alt: "tuner") %>
-</br>
+<%= image_tag('ikona.png', alt: "tuner") %>
+<br>
+<br>
 <%= link_to 'Sign up', signup_path, class: "btn btn-danger" %>
-<%= link_to 'Login', login_path, class: "btn btn-success" %>
+<%= link_to 'Login', login_path, class: "btn btn-primary" %>
 <% end %>
 </center>

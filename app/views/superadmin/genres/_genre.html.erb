@@ -1,8 +1,17 @@
 <tr>
   <td><%= link_to genre.name, superadmin_genre_path(genre) %></td>
-	
-	<% if logged_in? %>
-	<td><%= link_to ' Edit', edit_superadmin_genre_path(genre), class: ' btn btn-sm btn-primary' %>
-			<%= link_to ' Delete', superadmin_genre_path(genre), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' %></td>
-			<% end %>
+  <% if current_user.id == genre.user_id %>
+  	<td>
+      <%= link_to edit_superadmin_genre_path(genre), class: ' btn btn-sm btn-primary' do %>
+        <i class="glyphicon glyphicon-edit"></i> Edit
+      <% end %>
+
+      <%= link_to superadmin_genre_path(genre), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' do %>
+        <i class="glyphicon glyphicon-trash"></i> Delete
+      <% end %>
+    </td>
+
+
+
+	<% end %>
 </tr>

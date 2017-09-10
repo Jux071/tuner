@@ -8,6 +8,7 @@ class ArtistsController < ApplicationController
 
 	def show
 		@tracks = @artist.tracks.limit(10)
+		@albums = @artist.albums
 	end
 
 	private

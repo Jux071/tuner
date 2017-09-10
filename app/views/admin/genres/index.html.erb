@@ -1,7 +1,9 @@
 <% provide(:title, "Genres") %>
-<div class = "row col-md-12">
-	<div class = "well well-sm">
-		<h3>Genres <%= link_to 'Add new genre', new_admin_genre_path, class: 'btn btn-sm btn-primary' %></h3>
+	<div class = "well well-sm well-genres">
+		<h3>. <%= link_to new_admin_genre_path, class: 'btn btn-sm btn-primary' do %>
+			Add New Genre <i class="fa fa-plus"></i> 
+      <% end %>
+		</h3>
 		<% unless flash[:notice].blank? %>
 			<div class = "alert alert-success">
 				<p><%= flash[:notice] %></p>

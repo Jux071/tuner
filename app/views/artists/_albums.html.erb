@@ -1,0 +1,13 @@
+<div class="panel-heading">Albums <span class="badge"><%= @artist.albums.count %></span>
+</div>      
+  <table class = 'table table-striped table-hover'>
+  
+		<tbody>
+      <% @albums.each do |album| %>
+			<tr>
+				<td><%= link_to album.title, album_path(album) %></td>	
+				
+			</tr>
+		<% end %>
+		</tbody>
+  </table>

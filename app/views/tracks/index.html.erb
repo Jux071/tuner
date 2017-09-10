@@ -1,24 +1,30 @@
 <% provide(:title, "Tracks") %>
-<div class = "row col-md-12">
-	<div class = "well">
-		<h3>Tracks</h3>
-	</div>		
+<div class = "well well-sm well-tracks">
+		<h3>.</h3>
+</div>		
 	<div class="panel panel-default">  
-  <div class="panel-heading"><strong>Track details</strong></div>
+  <div class="panel-heading">
+  <div class=text-center>
+  <div class="form-group">
+      <%= form_tag(tracks_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search tracks" %>
+        <%= submit_tag "Search" %>
+      <% end %>
+      </form>
+      </div>
+</div>
+
 
   	<table class="table table-hover table-striped table-responsive">	
 			<thead>
 				<tr>
-	    		<th>Name</th>
-	    		<th>Duration</th>
-	    		<th>Artist</th>
-	    		<th>Genre</th>
+					<th></th>
+					<th>Artist</th>
+	    		<th>Track</th>
 	    		<th>Album</th>
-	    		<th></th>
-	    		<th></th>
-	    		<th></th>
-	    		<th></th>
-	    		<th></th>
+	    		<th><center>Duration</center></th>	    		
+	    		<th><center>Genre</center></th>	    		
+	    		<th>Actions</th>
 				</tr>
 			</thead>
 
@@ -26,6 +32,6 @@
 				<%= render @tracks.order(name: :asc) %>				
 			</tbody>
 		</table>
-		<%= will_paginate @tracks %>
+		<center><%= will_paginate @tracks %></center>
 	</div>
 </div>
