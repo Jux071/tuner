@@ -1,7 +1,5 @@
 class Superadmin::GenresController < Superadmin::BaseController
-	#before_action :authorize_for_superadmins
 	before_action :find_genre, { only: [:edit, :update, :show, :destroy]}
-
 
 	def index
 		@genre = Genre.all
@@ -15,19 +13,12 @@ class Superadmin::GenresController < Superadmin::BaseController
 	def create
 		@genre = Genre.new(genre_params)
 
-		#respond_to do |format|
 		if @genre.save
 			flash[:success] = 'Genre created successfully'
-			#format.html { redirect_to @genre, notice: 'Product was successfully created.' }
-      #format.json { render json: @genre, status: :created, location: @genre }
-      #format.js
 			redirect_to [:superadmin, @genre]
 		else
 			flash[:notice] = 'Error'
 			render :new
-			#format.html { render action: "new" }
-      #format.json { render json: @genre.errors, status: :unprocessable_entity }
-      #format.js
 		end
 	end
 

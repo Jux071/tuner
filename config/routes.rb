@@ -18,11 +18,19 @@ Rails.application.routes.draw do
 		resources :genres
 	end
 
-	resources :users, only: [:new, :create, :show]
 	resource :session, only: [:new, :create, :destroy]
+	resource :about, only: [:show]
+	resource :contact, only: [:show] 
+	resource :privacy, only: [:show] 
+
+	resources :users, only: [:new, :create]	
 	resources :albums, only: [:index, :show]
 	resources :playlist_tracks
 	resources :favorite_tracks
+	resources :tracks, only: [:index, :show]
+	resources :artists, only: [:index, :show]
+	resources :genres, only: [:index, :show]
+	resources :playlists	
 
 	get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
@@ -30,12 +38,8 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-	resources :tracks, only: [:index, :show]
-	resources :artists, only: [:index, :show]
-	resources :genres, only: [:index, :show]
-	resources :playlists
-	resource :about, only: [:show]
-	resource :contact, only: [:show] 
-	resource :privacy, only: [:show] 
+  match "/404", :to => "errors#not_found", :via => :all
+  match "/422", :to => "errors#unacceptable", :via => :all
+	match "/500", :to => "errors#internal_server_error", :via => :all
 	
 end

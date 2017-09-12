@@ -1,20 +1,14 @@
 class ArtistsController < ApplicationController
 	before_action :authorize_for_users
-	before_action :find_artist, { only: [:show]}
 
 	def index
-		@artist = Artist.all
+		@artist = Artist.search(params[:search])
 	end
 
 	def show
+		@artist = Artist.find(params[:id])
 		@tracks = @artist.tracks.limit(10)
 		@albums = @artist.albums
-	end
-
-	private
-
-	def find_artist
-		@artist = Artist.find(params[:id])
 	end
 
 end

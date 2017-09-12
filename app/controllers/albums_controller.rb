@@ -1,19 +1,13 @@
 class AlbumsController < ApplicationController
 	before_action :authorize_for_users
-	before_action :find_album, { only: [:show] }
 	
 	def index
-		@albums = Album.all
+		@albums = Album.search(params[:search])
 	end
 	
 	def show
-		@tracks = @album.tracks
-	end
-	
-	private
-
-	def find_album
 		@album = Album.find(params[:id])
+		@tracks = @album.tracks
 	end
 
 end

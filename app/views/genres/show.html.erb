@@ -1,23 +1,19 @@
 <% provide(:title, "#{@genre.name}") %>
-<div class="row col-md-9 col-md-offset-1">
-  <div class="panel panel-primary panel-custom-show">
-
-    <div class="panel-heading">
-      <h3 class="panel-title">Genre</h3>
-    </div>
-    <div class="panel-body">
-      <%= @genre.name %>
-    </div>    
-
-    <div class="panel-heading">
-      <h3 class="panel-title">Genre description</h3>
-    </div>
-    <div class="panel-body">
-      <%= @genre.description %>
-    </div>
-
-    <%= render 'tracks' %>
-    </div>
-    <%= render 'back' %>
+<div class="panel panel-primary panel-custom-show">
+  <div class="panel-heading">
+    <h3 class="panel-title">Genre</h3>
   </div>
-</div> 
+  <div class="panel-body">
+    <%= @genre.name %>
+  </div>    
+
+  <div class="panel-heading">
+    <h3 class="panel-title">Genre description</h3>
+  </div>
+  <div class="panel-body">
+    <%= @genre.description %>
+  </div>
+
+  <%= render 'tracks' %>
+</div>
+<%= render 'back' %>

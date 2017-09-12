@@ -10,10 +10,10 @@ class UsersController < ApplicationController
 			log_in @user
 			flash[:success] = 'Registered successfully!'
 		  redirect_to @user
-	else
-		render :new
+		else
+			render :new
+		end
 	end
-end
 
 	def show
 		@user = User.find(params[:id])
@@ -24,6 +24,5 @@ end
 	def user_params
 		params.require(:user).permit(:username, :email, :password, :password_confirmation)
 	end
-
     
 end

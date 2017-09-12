@@ -1,24 +1,20 @@
 <% provide(:title, "#{@artist.name}") %>
-<div class="row col-md-10 col-md-offset-1">
-  <div class="panel panel-primary panel-custom-show">
+<div class="panel panel-primary panel-custom-show">
+  <div class="panel-heading">
+    <h3 class="panel-title">Artist</h3>
+  </div>
+  <div class="panel-body">
+    <%= @artist.name %>
+  </div>    
 
-
-    <div class="panel-heading">
-      <h3 class="panel-title">Artist</h3>
-    </div>
-    <div class="panel-body">
-      <%= @artist.name %>
-    </div>    
-
-    <div class="panel-heading">
-      <h3 class="panel-title">Artist info</h3>
-    </div>
-    <div class="panel-body">
-      <%= @artist.artist_info %>
-    </div>    
-      <%= render 'tracks' %>
-    </div>
+  <div class="panel-heading">
+    <h3 class="panel-title">Artist info</h3>
+  </div>
+  <div class="panel-body">
+    <%= @artist.artist_info %>
+  </div>    
+    <%= render 'tracks' %>
+  </div>
 		
   <%= render 'back' %>
-  </div>
-</div> 
+</div>

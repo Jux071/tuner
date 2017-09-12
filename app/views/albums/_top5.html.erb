@@ -1,11 +1,11 @@
 <% Album.all.order('albums.created_at DESC').limit(5).each do |album| %>
 	<div class="table table-responsive">
-	<table class="table table-condensed">	
-		<tbody>
-			<tr>
-			  <td><%= album.artist.name %> - <%= album.title %></td>
-			</tr>
-		</tbody>
-	</table>
+		<table class="table table-condensed">	
+			<tbody>
+				<tr>
+				  <td><%= album.artist.name %> - <%= album.title %></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 <% end %>

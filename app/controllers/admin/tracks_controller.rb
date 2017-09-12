@@ -1,20 +1,10 @@
 class Admin::TracksController < Admin::BaseController
-  before_action :authorize_for_admins
 	before_action :find_track, { only: [:edit, :update, :show, :destroy] }
 	
-	#def index
-#if params[:search]
-#@tracks = Track.search(params[:search])
-#else
-#@tracks = Track.all
-#end
-#end
-
-def index
-	@tracks = Track.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
-	@popular = Favorite.joins("LEFT OUTER JOIN tracks ON favorites.track_id = tracks.id").select("favorites.*,tracks.name as name, tracks.artist_id as artist_id").group(:track_id).order('COUNT(tracks.id) DESC').limit(5)
-end
-
+	def index
+		@tracks = Track.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+		@popular = Favorite.joins("LEFT OUTER JOIN tracks ON favorites.track_id = tracks.id").select("favorites.*,tracks.name as name, tracks.artist_id as artist_id").group(:track_id).order('COUNT(tracks.id) DESC').limit(5)
+	end
 
 	def new
 		@track = Track.new
@@ -28,15 +18,12 @@ end
         format.html { redirect_to [:admin, @track] }
         format.js
       end
-		#	flash[:success] = 'Track created successfully'
-		#	redirect_to [:admin, @track]
+
 		else
 			respond_to do |format|
         format.html { render :edit }
         format.js
       end
-      #flash[:notice] = 'Error'
-			#render :new
 		end
 	end
 
@@ -72,12 +59,6 @@ end
 		flash[:notice] = 'Track deleted'
 		redirect_to admin_tracks_path
 	end
-
-	def newest
-		@tracks = Track.newest
-	end
-
-
 
 	private
 

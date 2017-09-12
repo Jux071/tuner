@@ -1,37 +1,34 @@
 <% provide(:title, "#{@track.artist.name} - #{@track.name} from #{@track.album.title}") %>
-<div class="row col-md-9">
-  <div class="panel panel-primary panel-custom-show">
-  	<div class="panel-heading">
-    	<h3 class="panel-title">Name</h3>
-  	</div>
-  	<div class="panel-body">
-    	<%= @track.name %>
-  	</div>
-  	<div class="panel-heading">
-    	<h3 class="panel-title">Duration</h3>
-  	</div>
-  	<div class="panel-body">
-    	<%= @track.duration %>
-  	</div>
-  	<div class="panel-heading">
-    	<h3 class="panel-title">Artist</h3>
-  	</div>
-  	<div class="panel-body">
-    	<%= @track.artist.name %>
-  	</div>
-    <div class="panel-heading">
-      <h3 class="panel-title">Album</h3>
-    </div>
-    <div class="panel-body">
-      <%= @track.album.title %>
-    </div>
-    <div class="panel-heading">
-      <h3 class="panel-title">Genre</h3>
-    </div>
-    <div class="panel-body">
-      <%= @track.genre.name %>
-    </div>
-	</div>	
-
-  <%= render 'back' %>
-</div> 
+<div class="panel panel-primary panel-custom-show">
+  <div class="panel-heading">
+    <h3 class="panel-title">Name</h3>
+  </div>
+  <div class="panel-body">
+    <%= @track.name %>
+  </div>
+  <div class="panel-heading">
+    <h3 class="panel-title">Duration</h3>
+  </div>
+  <div class="panel-body">
+    <%= @track.duration %>
+  </div>
+  <div class="panel-heading">
+    <h3 class="panel-title">Artist</h3>
+  </div>
+  <div class="panel-body">
+    <%= @track.artist.name %>
+  </div>
+  <div class="panel-heading">
+    <h3 class="panel-title">Album</h3>
+  </div>
+  <div class="panel-body">
+    <%= @track.album.title %>
+  </div>
+  <div class="panel-heading">
+    <h3 class="panel-title">Genre</h3>
+  </div>
+  <div class="panel-body">
+    <%= @track.genre.name %>
+  </div>
+</div>
+<%= render 'back' %>

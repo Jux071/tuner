@@ -208,14 +208,7 @@ Track.create!([{
 
 Playlist.destroy_all
 
-Playlist.create!([{
-  name: 'Monday list',
-  user_id: 1
-},
-{
-  name: 'Funky',
-  user_id: 1
-},
+Playlist.create!([
 {
   name: 'My special list',
   user_id: 2
@@ -227,16 +220,4 @@ Playlist.create!([{
 {
   name: 'Everyday',
   user_id: 2
-},
-{
-  name: 'Friyay',
-  user_id: 3
-},
-{
-  name: 'Cool tunes',
-  user_id: 3
-},
-{
-  name: 'Dub',
-  user_id: 3
 }])

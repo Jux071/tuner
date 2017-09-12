@@ -1,9 +1,7 @@
 class Admin::AlbumsController < Admin::BaseController
-	before_action :authorize_for_admins
 	before_action :find_album, { only: [:edit, :update, :show, :destroy] }
 	
 	def index
-		#@albums = Album.all
 		@albums = Album.search(params[:search])
 	end
 
@@ -16,7 +14,7 @@ class Admin::AlbumsController < Admin::BaseController
 		@genre = Genre.new
 
 		respond_to do |format|
-    format.html  # index.html.erb
+    format.html  
     format.json  { render :json => @album }
   end
 
@@ -49,7 +47,6 @@ class Admin::AlbumsController < Admin::BaseController
 		flash[:success] = 'Album deleted'
 		redirect_to admin_albums_path
 	end
-
 
 	private
 

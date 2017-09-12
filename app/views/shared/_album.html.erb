@@ -1,6 +1,6 @@
 <% Album.all.each.order(created_at: :desc).limit(2) do |album| %>
-<tr>
-  <td><%= album.artist.name %></td>
-	<td><%= album.title %></td>
-</tr>
+	<tr>
+	  <td><%= album.artist.name %></td>
+		<td><%= album.title %></td>
+	</tr>
 <% end %>

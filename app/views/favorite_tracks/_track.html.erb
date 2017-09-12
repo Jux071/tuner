@@ -18,24 +18,6 @@
 					<i class="glyphicon glyphicon-heart gi-2x" role="button" aria-hidden="true"></i>
 				<% end %>
 			<% end %>
-			
-		
-		<% if current_user.admin? %>
-			
-				<%= link_to edit_admin_track_path(track), class: 'btn btn-sm btn-primary', target: :_blank do %>
-					<i class="glyphicon glyphicon-edit"></i> Edit
-				<% end %>
-				<%= link_to admin_track_path(track), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger', target: :_blank do %>
-					<i class="glyphicon glyphicon-trash"></i> Delete
-				<% end %>
-		<% elsif current_user.superadmin? %>
-	  	<%= link_to edit_superadmin_track_path(track), class: 'btn btn-sm btn-primary', target: :_blank do %>
-				<i class="glyphicon glyphicon-edit"></i> Edit
-			<% end %>
-			<%= link_to superadmin_track_path(track), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger', target: :_blank do %>
-				<i class="glyphicon glyphicon-trash"></i> Delete
-			<% end %>
-			</td>
-		<% end %>
+		</td>
 	</tr>
 <% end %>

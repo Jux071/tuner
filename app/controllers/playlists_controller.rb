@@ -2,9 +2,7 @@ class PlaylistsController < ApplicationController
 	before_action :authorize_for_users
 	before_action :find_playlist, { only: [:edit, :update, :show, :destroy]}
 
-
 	def index
-		#@playlist = current_user.playlists
 		@playlists = Playlist.where(user_id: current_user.id)
 		@albums = Album.all
 	end
@@ -14,9 +12,7 @@ class PlaylistsController < ApplicationController
 	end
 
 	def create
-		@playlist = Playlist.new(playlist_params)
-		
-		#@playlist.user_id = current_user.user_id
+		@playlist = Playlist.new(playlist_params)		
 
 		if @playlist.save
 			flash[:success] = "Playlist created successfully!"
@@ -57,7 +53,6 @@ class PlaylistsController < ApplicationController
 
 	def find_playlist
 		@playlist = Playlist.find(params[:id])	
-		#@playlist = current_user.playlists.find(params[:playlist_id])
-		#@playlist = current_user.playlists.where(id: params[:playlist_id]).first
 	end
+	
 end

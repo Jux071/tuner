@@ -1,20 +1,19 @@
 <% provide(:title, "Genres") %>
+<div class = "well well-sm well-genres">
+	<h3>.</h3>
+</div>	
 
-	<div class = "well well-sm well-genres">
-		<h3>.</h3>
-	</div>	
+<div class="panel panel-default"> 
+  <table class="table table-hover">	
+		<thead>
+			<tr>
+	    	<th>Genre</th>
+	     	<th><center>Total tracks</center></th>
+			</tr>
+		</thead>
 
-	<div class="panel panel-default"> 
-  	<table class="table table-hover table-striped">	
-			<thead>
-				<tr>
-	    		<th>Genre</th>
-	     		<th><center>Total tracks</center></th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<%= render @genre.order(name: :asc) %>
-			</tbody>
-		</table>
-	</div>
+		<tbody>
+			<%= render @genre.order(name: :asc) %>
+		</tbody>
+	</table>
+</div>

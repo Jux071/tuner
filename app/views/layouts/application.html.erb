@@ -6,31 +6,30 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
   </head>
+
   <% if logged_in? %>
-  <div class="container">
-  <body>
-    <%= render 'shared/header' %>
-    <br>
-    <% flash.each do |message_type, message| %>
-      <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-    <% end %>
-    
-    <div class="row">
-      <div class="col-md-3"><%= render 'shared/sidebar' %></div>
-      <div class="col-md-9"><%= yield %></div>
+    <div class="container">
+      <body>
+        <%= render 'shared/header' %>
+        <br>
+        <% flash.each do |message_type, message| %>
+          <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+        <% end %>
+        <div class="row">
+          <div class="col-md-3"><%= render 'shared/sidebar' %></div>
+          <div class="col-md-9"><%= yield %></div>
+        </div>
+      </body>
+      <%= render 'shared/footer' %>
     </div>
-  </body>
-  <%= render 'shared/footer' %>
-  </div>
 
   <% else %>
-  <div class="container">
-  <body>        
-    <%= yield %>    
-  </body>
-  <%= render 'shared/footer' %>
-  </div>
- <% end %>
+    <div class="container">
+      <body>        
+        <%= yield %>    
+      </body>
+      <%= render 'shared/footer' %>
+    </div>
+  <% end %>
 </html>

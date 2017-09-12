@@ -1,8 +1,0 @@
-<%= form_for [:superadmin, @playlist] do |form| %>
-	<%= form.label :name %>
-	<%= form.text_field :name, class: 'form-control' %>
-	<br>
-	
-	<%= form.hidden_field :user_id, :value => current_user.id %>
-  <%= form.submit params[:action] == 'new' ? 'Save' : 'Update', class: 'btn btn-block btn-default' %>
-<% end %>

@@ -5,13 +5,9 @@
       <%= link_to edit_superadmin_genre_path(genre), class: ' btn btn-sm btn-primary' do %>
         <i class="glyphicon glyphicon-edit"></i> Edit
       <% end %>
-
       <%= link_to superadmin_genre_path(genre), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' do %>
         <i class="glyphicon glyphicon-trash"></i> Delete
       <% end %>
     </td>
-
-
-
 	<% end %>
 </tr>

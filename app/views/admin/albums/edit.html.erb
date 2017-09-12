@@ -1,11 +1,7 @@
 <% provide(:title, "Edit #{@album.title}") %>
-<div class = "row">
-  <div class = "col-md-6">
-  	<div class="well well-sm"><h1 style="text-align: center";>Update album</h1>   
+<div class="well well-sm"><h1 style="text-align: center";>Update album</h1>   
 
-    <%= render 'shared/validation_messages', model: @album %>
-    <%= render 'form' %>
-  	</div>
-  	<%= render 'back' %>
-  </div>    
+  <%= render 'shared/validation_messages', model: @album %>
+  <%= render 'form' %>
 </div>
+  <%= render 'back' %>

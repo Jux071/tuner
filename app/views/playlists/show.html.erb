@@ -1,20 +1,11 @@
 <% provide(:title, "#{@playlist.name}") %>
-<div class="row col-md-12">
-  <div class="panel panel-primary panel-custom-show">
-
-
-    <div class="panel-heading">
-      <h3 class="panel-title">Playlist name</h3>
-    </div>
-    <div class="panel-body">
-      <%= @playlist.name %>
-    </div>    
-    
-  <%= render 'track' %>
-
-  
-    </div>
-		
-  <%= render 'back' %>
+<div class="panel panel-primary panel-custom-show">
+  <div class="panel-heading">
+    <h3 class="panel-title">Playlist name</h3>
   </div>
-</div> 
+  <div class="panel-body">
+    <%= @playlist.name %>
+  </div>    
+  <%= render 'track' %>
+</div>
+<%= render 'back' %>

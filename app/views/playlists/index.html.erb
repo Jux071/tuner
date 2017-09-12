@@ -1,27 +1,25 @@
 <% provide(:title, "Playlists") %>
+<div class = "well well-sm well-playlists">
+	<h3><%= link_to 'Add new playlist', new_playlist_path, class: 'btn btn-sm btn-primary' %></h3>
+	<% unless flash[:notice].blank? %>
+		<div class = "alert alert-success">
+			<p><%= flash[:notice] %></p>
+		</div>
+	<% end %>
+</div>
 
-	<div class = "well well-sm well-playlists">
-		<h3><%= link_to 'Add new playlist', new_playlist_path, class: 'btn btn-sm btn-primary' %></h3>
-		<% unless flash[:notice].blank? %>
-			<div class = "alert alert-success">
-				<p><%= flash[:notice] %></p>
-			</div>
-		<% end %>
-	</div>
+<div class="panel panel-default">
+	<table class="table table-hover">	
+		<thead>
+			<tr>
+	    	<th>Playlist name</th>
+	    	<th><center>Total tracks</center></th>
+	     	<th>Actions</th>
+			</tr>
+		</thead>
 
-	<div class="panel panel-default">  
- 
-  	<table class="table table-hover table-striped">	
-			<thead>
-				<tr>
-	    		<th>Playlist name</th>
-	    		<th><center>Total tracks</center></th>
-	     		<th>Actions</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<%= render @playlists.order(name: :asc) %>
-			</tbody>
-		</table>
-	</div>
+		<tbody>
+			<%= render @playlists.order(name: :asc) %>
+		</tbody>
+	</table>
+</div>

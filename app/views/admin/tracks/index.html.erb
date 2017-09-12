@@ -1,39 +1,36 @@
 <% provide(:title, "Tracks") %>
-	<div class = "well well-sm well-tracks">
-		<h3>. <%= link_to new_admin_track_path, class: 'btn btn-sm btn-primary' do %>
-			Add New Track  <i class="fa fa-plus"></i> 
-      <% end %>
-		</h3>
-	</div>		
-	<div class="panel panel-default">  
+<div class = "well well-sm well-tracks">
+	<h3>. <%= link_to new_admin_track_path, class: 'btn btn-sm btn-primary' do %>
+		Add New Track  <i class="fa fa-plus"></i>
+		<% end %>
+	</h3>
+</div>		
+<div class="panel panel-default">  
   <div class="panel-heading">
-  <div class=text-center>
-  <div class="form-group">
-      <%= form_tag(superadmin_tracks_path, :method => "get", id: "search-form") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Search tracks" %>
-        <%= submit_tag "Search" %>
-      <% end %>
-      </form>
+  	<div class=text-center>
+  		<div class="form-group">
+	      <%= form_tag(admin_tracks_path, :method => "get", id: "search-form") do %>
+	        <%= text_field_tag :search, params[:search], placeholder: "Search tracks" %>
+	        <%= submit_tag "Search" %>
+	      <% end %>
       </div>
-</div>
-  	<table class="table table-hover table-striped">	
-			<thead>
-				<tr>
-	    		<th>Track</th>
-	    		<th>Artist</th>
-	    		<th>Album</th>
-	    		<th><center>Duration</center></th>	    		
-	    		<th><center>Genre</center></th>	    		
-	    		<th>Actions</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<%= render @tracks.order(name: :asc) %>
-				
-			</tbody>
-		</table>
-		<center><%= will_paginate @tracks %></center>
+    </div>
 	</div>
-</div>
+  <table class="table table-hover">	
+		<thead>
+			<tr>
+	    	<th>Track</th>
+	    	<th>Artist</th>
+	    	<th>Album</th>
+	    	<th><center>Duration</center></th>	    		
+	    	<th><center>Genre</center></th>	    		
+	    	<th>Actions</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<%= render @tracks.order(name: :asc) %>
+		</tbody>
+	</table>
+	<center><%= will_paginate @tracks %></center>
 </div>

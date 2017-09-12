@@ -1,5 +1,4 @@
 class Superadmin::AlbumsController < Superadmin::BaseController
-	#before_action :authorize_for_superadmins
 	before_action :find_album, { only: [:edit, :update, :show, :destroy] }
 	
 	def index
@@ -15,7 +14,7 @@ class Superadmin::AlbumsController < Superadmin::BaseController
 		@genre = Genre.new
 
 		respond_to do |format|
-    format.html  # index.html.erb
+    format.html
     format.json  { render :json => @genre }
   end
 
@@ -48,7 +47,6 @@ class Superadmin::AlbumsController < Superadmin::BaseController
 		flash[:success] = 'Album deleted'
 		redirect_to superadmin_albums_path
 	end
-
 
 	private
 

@@ -1,29 +1,27 @@
 <% provide(:title, "Genres") %>
-	<div class = "well well-sm well-genres">
-		<h3>. <%= link_to new_admin_genre_path, class: 'btn btn-sm btn-primary' do %>
-			Add New Genre <i class="fa fa-plus"></i> 
-      <% end %>
-		</h3>
-		<% unless flash[:notice].blank? %>
-			<div class = "alert alert-success">
-				<p><%= flash[:notice] %></p>
-			</div>
-		<% end %>
-	</div>	
+<div class = "well well-sm well-genres">
+	<h3>. <%= link_to new_admin_genre_path, class: 'btn btn-sm btn-primary' do %>
+					Add New Genre <i class="fa fa-plus"></i>
+					<% end %>
+	</h3>
+	<% unless flash[:notice].blank? %>
+		<div class = "alert alert-success">
+			<p><%= flash[:notice] %></p>
+		</div>
+	<% end %>
+</div>	
 
-	<div class="panel panel-default">  
- 
-  	<table class="table table-hover table-striped">	
-			<thead>
-				<tr>
-	    		<th>Genre</th>
-	     		<th>Actions</th>
-				</tr>
-			</thead>
+<div class="panel panel-default">
+	<table class="table table-hover">	
+		<thead>
+			<tr>
+	    	<th>Genre</th>
+	     	<th>Actions</th>
+			</tr>
+		</thead>
 
-			<tbody>
-				<%= render @genre.order(name: :asc) %>
-			</tbody>
-		</table>
-	</div>
+		<tbody>
+			<%= render @genre.order(name: :asc) %>
+		</tbody>
+	</table>
 </div>

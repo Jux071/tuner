@@ -4,42 +4,37 @@
 	<h1><%= @title.upcase %></h1>
 </div>
 </center>
-	<% if logged_in? %>
-	<div class = "row col-md-12">
-	<div class="panel panel-default">  
-  <div class="panel-heading"><strong>Tracks</strong></div>
-
-  	<table class="table table-hover table-striped table-responsive">	
+<% if logged_in? %>
+	<div class="panel panel-default">
+  	<table class="table table-hover table-responsive">	
 			<thead>
 				<tr>
-	    		<th>Name</th>
-	    		<th>Duration</th>
-	    		<th>Artist</th>
-	    		<th>Genre</th>
+					<th></th>
+					<th>Artist</th>
+	    		<th>Track</th>
 	    		<th>Album</th>
+	    		<th><center>Duration</center></th>	    		
+	    		<th><center>Genre</center></th>	    		
 	    		<th>Actions</th>
 				</tr>
 			</thead>
 
 			<tbody>
 			  <%= render @tracks %>
-							
 			</tbody>
 		</table>
 		<center><%= will_paginate @tracks %></center>
 	</div>
-</div>
 <% end %>
-</div>
 
 <% unless logged_in? %>
-<br>
-
-<center>
-<%= image_tag('ikona.png', alt: "tuner") %>
-<br>
-<br>
-<%= link_to 'Sign up', signup_path, class: "btn btn-danger" %>
-<%= link_to 'Login', login_path, class: "btn btn-primary" %>
+	<br>
+	<center>
+	<%= image_tag('ikona.png', alt: "tuner") %>
+	<br>
+	<br>
+	<%= link_to 'Sign up', signup_path, class: "btn btn-danger" %>
+	<%= link_to 'Login', login_path, class: "btn btn-primary" %>
+	</center>
 <% end %>
-</center>
+
