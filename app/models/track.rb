@@ -4,7 +4,6 @@ class Track < ApplicationRecord
 	belongs_to :album
 	belongs_to :user
 
-	#has_many :artists, through: :artist_track
 	has_many :favorited_by, through: :favorites, source: :users
 
 	has_many :playlist_tracks

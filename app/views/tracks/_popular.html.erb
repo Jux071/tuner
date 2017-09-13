@@ -1,4 +1,4 @@
-<% Track.joins("LEFT OUTER JOIN tracks ON favorites.track_id = tracks.id").select("tracks.name as name, tracks.artist_id as artist_id").group(:track_id).order('COUNT(tracks.id) DESC').limit(5).each do |track| %>
+<% Favorite.select("tracks.name as name, tracks.artist_id as artist_id").joins("LEFT OUTER JOIN tracks ON favorites.track_id = tracks.id").group(:track_id, :name, :artist_id).order('COUNT(tracks.id) DESC').limit(5).each do |track| %>
 	<div class="table-responsive">
 		<table class="table table-condensed">	
 			<tbody>
