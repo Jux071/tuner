@@ -15,7 +15,7 @@
   <%= form.collection_select :album_id, Album.all, :id, :title, { prompt: 'Choose album'}, class: 'form-control' %>
   <br>
   <%= form.label :link %>
-  <%= form.text_field :link, class: 'form-control' %>   
+  <%= form.text_field :link, class: 'form-control' %>
   <br>
   <%= form.hidden_field :user_id, :value => current_user.id %>
   <%= form.submit params[:action] == 'new' ? 'Save' : 'Update', class: 'btn btn-block btn-default' %>

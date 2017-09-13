@@ -1,7 +1,7 @@
 <% provide(:title, "Edit Artist") %>
 <div class="well well-sm">
 	<h1 style="text-align: center";>Update artist</h1>   
-	<%= render 'shared/validation_messages', model: @artist %>
+	<%= render 'shared/error_messages', model: @artist %>
 	<%= render 'form' %>
 </div>
 <%= render 'back' %>

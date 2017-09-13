@@ -1,7 +1,7 @@
 <% provide(:title, "Edit Track") %>
 <div class="well well-sm">
 	<h1 style="text-align: center";>Update track</h1>
-	<%= render 'shared/validation_messages', model: @track %>
+	<%= render 'shared/error_messages', model: @track %>
   <%= render 'form' %>
 </div>
 <%= render 'back' %>
