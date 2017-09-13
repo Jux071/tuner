@@ -8,7 +8,6 @@ class Artist < ApplicationRecord
 
 	def self.search(search)
 		where("name LIKE ?", "%#{search}%") 
-    #where("artist LIKE ?", "%#{search}%")
 	end
 	
 end

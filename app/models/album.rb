@@ -6,13 +6,12 @@ class Album < ApplicationRecord
 	has_many :tracks, dependent: :destroy
 
 	validates :title, presence: true, length: { maximum: 30 }
-	validates_length_of :released, maximum: 4, numericality: true
+	validates :released, presence: true, length: { maximum: 4 }, numericality: true
 
 	scope :top5, -> { order(created_at: :desc) }
 
 	def self.search(search)
 		where("title LIKE ?", "%#{search}%") 
-    #where("artist LIKE ?", "%#{search}%")
 	end
 
 end

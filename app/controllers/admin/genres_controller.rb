@@ -18,7 +18,6 @@ class Admin::GenresController < Admin::BaseController
 			flash[:success] = 'Genre created successfully'
 			redirect_to [:admin, @genre]
 		else
-			flash[:notice] = 'Error'
 			render :new
 		end
 	end

@@ -1,7 +1,7 @@
 <% provide(:title, "Edit Genre") %>
 <div class="well well-sm">
 	<h1 style="text-align: center";>Update genre</h1>   
-	<%= render 'shared/validation_messages', model: @genre %>
+	<%= render 'shared/error_messages', model: @genre %>
 	<%= render 'form' %>
 </div>
 <%= render 'back' %>

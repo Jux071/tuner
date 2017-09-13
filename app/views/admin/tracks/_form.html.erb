@@ -1,29 +1,21 @@
-<%= form_for [:admin, @track]  do |form|%>	
+<%= form_for [:admin, @track] do |form|%>	
   <%= form.label :name %>
   <%= form.text_field :name, class: 'form-control' %>
-  <%= error_for :name, @track.errors do |message| %>
-  <strong><%= message %></strong>
-  <% end %>
   <br>
   <%= form.label :duration %>
   <%= form.text_field :duration, class: 'form-control' %>  	
-  <%= error_for :duration, @track.errors %>
   <br>
   <%= form.label :artist_id %>
   <%= form.collection_select :artist_id, Artist.all, :id, :name, { prompt: 'Choose artist'}, class: 'form-control' %>
-  <%= error_for :artist, @track.errors %>
   <br>
   <%= form.label :genre_id %>
   <%= form.collection_select :genre_id, Genre.all, :id, :name, { prompt: 'Choose genre'}, class: 'form-control' %>
-  <%= error_for :genre, @track.errors %>
   <br>
   <%= form.label :album_id %>
   <%= form.collection_select :album_id, Album.all, :id, :title, { prompt: 'Choose album'}, class: 'form-control' %>
-  <%= error_for :album, @track.errors %>
   <br>
   <%= form.label :link %>
   <%= form.text_field :link, class: 'form-control' %>   
-  <%= error_for :link, @track.errors %>
   <br>
   <%= form.hidden_field :user_id, :value => current_user.id %>
   <%= form.submit params[:action] == 'new' ? 'Save' : 'Update', class: 'btn btn-block btn-default' %>

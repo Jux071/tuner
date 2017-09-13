@@ -3,7 +3,7 @@
   <div class="row col-md-offset-6">
 		<div class="well well-sm">
 			<h1 style="text-align: center";>Login</h1>
-      <%= display_flash :error %>
+      <%= display_flash :alert %>
       <%= form_for(:session, url: login_path) do |f| %>
         <%= f.label :username %>
         <%= f.text_field :username, class: 'form-control' %>

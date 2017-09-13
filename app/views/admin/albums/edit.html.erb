@@ -1,7 +1,7 @@
 <% provide(:title, "Edit #{@album.title}") %>
 <div class="well well-sm"><h1 style="text-align: center";>Update album</h1>   
 
-  <%= render 'shared/validation_messages', model: @album %>
+  <%= render 'shared/error_messages', model: @album %>
   <%= render 'form' %>
 </div>
   <%= render 'back' %>

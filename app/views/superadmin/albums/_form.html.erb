@@ -1,16 +1,12 @@
 <%= form_for [:superadmin, @album] do |form| %>
 	<%= form.label :artist_id %>
   <%= form.collection_select :artist_id, Artist.all, :id, :name, { prompt: 'Choose artist'}, class: 'form-control' %>
-  <%= error_for :artist, @album.errors %>
   <br>
   <%= form.label :title %>
 	<%= form.text_field :title, class: 'form-control' %>
-	<%= error_for :title, @album.errors %>
 	<br>
 	<%= form.label :genre_id %>
-  <%= form.collection_select :genre_id, Genre.all, :id, :name, { prompt: 'Choose genre'}, class: 'form-control' %>
-  <%= error_for :genre, @album.errors %>
-  
+  <%= form.collection_select :genre_id, Genre.all, :id, :name, { prompt: 'Choose genre'}, class: 'form-control' %>  
   <br>
 	<%= form.label :released %>
 	<%= form.text_field :released, class: 'form-control' %>

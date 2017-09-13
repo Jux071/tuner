@@ -1,5 +1,6 @@
 <% provide(:title, "New Album") %>
 <div class = "well"><h1 style = "text-align: center">Add new album</h1>
+	<%= render 'shared/error_messages', model: @album %>
 	<%= render 'form' %>
 </div>
 <%= render 'back' %>

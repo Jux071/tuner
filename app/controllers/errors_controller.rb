@@ -1,13 +1,13 @@
 class ErrorsController < ApplicationController
-	def not_found
-		render(status: 404)
+	def error_404
+  	render status: 404
 	end
 
-	def unacceptable
-		render(status: 422)		
+	def error_422
+		render status: 422
 	end
 
-	def internal_server_error
-		render(status: 500)
+	def error_500
+	  render status: 500
 	end
 end
