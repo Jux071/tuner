@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 		resources :artists
 		resources :tracks
 		resources :genres
+		resource :about, only: [:show]
+		resource :contact, only: [:show] 
+		resource :privacy, only: [:show] 
 	end
 
 	namespace :superadmin do
@@ -16,6 +19,9 @@ Rails.application.routes.draw do
 		resources :artists
 		resources :tracks
 		resources :genres
+		resource :about, only: [:show]
+		resource :contact, only: [:show] 
+		resource :privacy, only: [:show] 
 	end
 
 	resource :session, only: [:new, :create, :destroy]
