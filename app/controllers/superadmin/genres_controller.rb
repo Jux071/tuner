@@ -41,7 +41,7 @@ class Superadmin::GenresController < Superadmin::BaseController
 	def destroy
 		if @genre.user_id = current_user.id
 			@genre.destroy
-			flash[:success] = "Genre deleted!"
+			flash[:danger] = "Genre deleted!"
 			redirect_to superadmin_genres_path
 		else
 			flash[:danger] = "You are not authorized to delete genre!"

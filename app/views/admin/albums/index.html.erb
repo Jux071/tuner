@@ -20,6 +20,7 @@
   <table class="table table-hover table-striped">	
 		<thead>
 			<tr>
+				<th></th>
 	    	<th>Title</th>
 	    	<th>Artist</th>
 	    	<th><center>Released</center></th>
@@ -32,4 +33,7 @@
 			<%= render @albums.order(title: :asc) %>
 		</tbody>
 	</table>
+	<div class="digg_pagination">    
+    <center><%= will_paginate @albums %></center>
+  </div>
 </div>

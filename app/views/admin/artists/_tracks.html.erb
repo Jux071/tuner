@@ -4,7 +4,8 @@
 	<thead>
 		<tr>
     	<th>Track</th>
-    	<th>Duration</th>
+    	<th>Album</th>
+    	<th><center>Duration</center></th>
     	<th>Actions</th>
 		</tr>
 	</thead>
@@ -12,10 +13,10 @@
 		<% @tracks.each do |track| %>
 		<tr>
 			<td><%= link_to track.name, admin_track_path(track) %></td>
-			<td><%= track.duration %></td>
 			<td><%= link_to track.album.title, admin_album_path(track.album) %></td>
+			<td><center><%= track.duration %></center></td>			
 			<td>
-				<% if logged_in? %>
+				<% if current_user.id == track.user_id %>
 					<%= link_to edit_admin_track_path(track), class: 'btn btn-sm btn-primary' do %>
 						<i class="glyphicon glyphicon-edit"></i> Edit
 					<% end %>

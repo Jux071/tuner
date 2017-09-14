@@ -3,7 +3,6 @@ class Admin::TracksController < Admin::BaseController
 	
 	def index
 		@tracks = Track.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
-		@popular = Favorite.joins("LEFT OUTER JOIN tracks ON favorites.track_id = tracks.id").select("favorites.*,tracks.name as name, tracks.artist_id as artist_id").group(:track_id).order('COUNT(tracks.id) DESC').limit(5)
 	end
 
 	def new
@@ -13,8 +12,14 @@ class Admin::TracksController < Admin::BaseController
 	def create
 		@track = Track.new(track_params)
 
+		unless @track.album.nil? 
+    	@track.genre_id = @track.album.genre_id
+    	@track.artist_id = @track.album.artist_id
+    end
+
 		if @track.save
 			respond_to do |format|
+				flash[:success] = 'Track added successfully'
         format.html { redirect_to [:admin, @track] }
         format.js
       end
@@ -56,7 +61,7 @@ class Admin::TracksController < Admin::BaseController
 
 	def destroy
 		@track.destroy
-		flash[:notice] = 'Track deleted'
+		flash[:danger] = 'Track deleted'
 		redirect_to admin_tracks_path
 	end
 

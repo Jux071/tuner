@@ -2,7 +2,7 @@ class Superadmin::ArtistsController < Superadmin::BaseController
 	before_action :find_artist, { only: [:edit, :update, :show, :destroy]}
 
 	def index
-		@artists = Artist.search(params[:search])
+		@artists = Artist.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
 	end
 
 	def new
@@ -39,7 +39,7 @@ class Superadmin::ArtistsController < Superadmin::BaseController
 	def destroy
 		if @artist.user_id == current_user.id
 			@artist.destroy
-			flash[:success] = "Artist deleted!"
+			flash[:danger] = "Artist deleted!"
 			redirect_to superadmin_artists_path
 		else
 			flash[:notice] = "You are not authorized to delete artist!"

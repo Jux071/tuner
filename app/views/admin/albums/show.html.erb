@@ -1,8 +1,7 @@
 <% provide(:title, "#{@album.artist.name} - #{@album.title}") %>
-<div class="row col-md-10 col-md-offset-1">
-  <div class="media">
+<div class="media">
   <div class="media-left">
-    <a href="#">
+    <a>
       <%= image_tag(@album.cover, size: "360x360", alt: "Album cover") %>
     </a>
   </div>

@@ -41,7 +41,7 @@ class PlaylistsController < ApplicationController
 
 	def destroy
 		@playlist.destroy
-		flash[:success] = "Playlist deleted"
+		flash[:danger] = "Playlist deleted"
 		redirect_to playlists_path
 	end
 

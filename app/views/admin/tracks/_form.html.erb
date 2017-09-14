@@ -5,12 +5,6 @@
   <%= form.label :duration %>
   <%= form.text_field :duration, class: 'form-control' %>  	
   <br>
-  <%= form.label :artist_id %>
-  <%= form.collection_select :artist_id, Artist.all, :id, :name, { prompt: 'Choose artist'}, class: 'form-control' %>
-  <br>
-  <%= form.label :genre_id %>
-  <%= form.collection_select :genre_id, Genre.all, :id, :name, { prompt: 'Choose genre'}, class: 'form-control' %>
-  <br>
   <%= form.label :album_id %>
   <%= form.collection_select :album_id, Album.all, :id, :title, { prompt: 'Choose album'}, class: 'form-control' %>
   <br>

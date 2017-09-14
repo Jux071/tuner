@@ -28,4 +28,7 @@
 			<%= render @artists.order(name: :asc) %>
 		</tbody>
 	</table>
+	<div class="digg_pagination">    
+    <center><%= will_paginate @artists %></center>
+  </div>
 </div>

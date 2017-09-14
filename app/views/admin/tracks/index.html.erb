@@ -32,5 +32,7 @@
 			<%= render @tracks.order(name: :asc) %>
 		</tbody>
 	</table>
-	<center><%= will_paginate @tracks %></center>
+	<div class="digg_pagination">    
+    <center><%= will_paginate @tracks %></center>
+  </div>
 </div>

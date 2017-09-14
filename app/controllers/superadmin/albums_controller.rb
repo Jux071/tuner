@@ -2,7 +2,7 @@ class Superadmin::AlbumsController < Superadmin::BaseController
 	before_action :find_album, { only: [:edit, :update, :show, :destroy] }
 	
 	def index
-		@albums = Album.search(params[:search])
+		@albums = Album.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
 	end
 
 	def new
@@ -19,7 +19,7 @@ class Superadmin::AlbumsController < Superadmin::BaseController
   end
 
 		if @album.save
-			flash[:notice] = 'Album created successfully'
+			flash[:success] = 'Album created successfully'
 			redirect_to [:superadmin, @album]
 		else
 			render :new
@@ -44,7 +44,7 @@ class Superadmin::AlbumsController < Superadmin::BaseController
 
 	def destroy
 		@album.destroy
-		flash[:success] = 'Album deleted'
+		flash[:danger] = 'Album deleted'
 		redirect_to superadmin_albums_path
 	end
 
