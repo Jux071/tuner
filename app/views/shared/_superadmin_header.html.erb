@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default">
 	<ul class="nav navbar-nav">
-    <a class="navbar-brand" href="http://localhost:3000/superadmin/dashboard">TUNER</a>
+    <a><%= link_to "TUNER", superadmin_dashboard_path , class: 'navbar-brand' %></a>
     <li><%= link_to "Artists", superadmin_artists_path %></li>
     <li><%= link_to "Tracks", superadmin_tracks_path %></li>
     <li><%= link_to "Albums", superadmin_albums_path %></li>
